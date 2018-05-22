@@ -62,9 +62,9 @@
         <div id="dashboard-header" class="tx-soft-background">
             <div class="uk-grid-collapse" uk-grid>
             <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-push">
-            <span uk-icon="icon: menu; ratio: 1.3"></span>Menu</button>
+            <span uk-icon="icon: menu; ratio: 1.3"></span><a class="uk-visible@l"> Menu</a></button>
                 <div class="uk-width-expand uk-padding-small">
-                    <img src="<?= base_url('assets/img/icons/chevron-left.png') ?>" style="vertical-align: middle; cursor: pointer;" onclick="previousDashboard()"/>
+                    <img src="<?= base_url('assets/img/icons/chevron-left.png') ?>" class="uk-visible@m" style="vertical-align: middle; cursor: pointer;" onclick="previousDashboard()"/>
                     <div class="uk-display-inline-block uk-padding-small uk-padding-remove-bottom uk-padding-remove-top" style="vertical-align: middle;">
                         <div class="uk-text-small">Perfect Spy &raquo;</div>
                             <div uk-form-custom="target: > * > span:first-child">
@@ -90,8 +90,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="uk-width-auto@m uk-width-1-4 uk-text-right uk-padding-small">
-                        <img src="<?= base_url('assets/img/icons/chevron-right.png') ?>" style="vertical-align: middle; cursor: pointer;" onclick="nextDashboard()"/>
+                    <div class="uk-width-auto@m uk-width-1-4 uk-text-right uk-padding-small uk-visible@m">
+                        <img src="<?= base_url('assets/img/icons/chevron-right.png') ?>"  style="vertical-align: middle; cursor: pointer;" onclick="nextDashboard()"/>
                     </div>
                 </div>
             </div>
