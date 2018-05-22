@@ -1,0 +1,10 @@
+RewriteEngine On
+# Oculta directorios importantes y los redirige a index.php
+RewriteRule ^(application|system|\.svn) index.php/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]  
+
+<Files "index.php">
+AcceptPathInfo On
+</Files>

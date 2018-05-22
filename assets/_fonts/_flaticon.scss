@@ -1,0 +1,63 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 19/10/2017 18:01
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-semaphore-outlined-traffic-tool:before { content: "\f100"; }
+.flaticon-circular-shape-silhouette:before { content: "\f101"; }
+.flaticon-interface:before { content: "\f102"; }
+.flaticon-logout:before { content: "\f103"; }
+.flaticon-controls:before { content: "\f104"; }
+.flaticon-speaker:before { content: "\f105"; }
+.flaticon-dashboard:before { content: "\f106"; }
+.flaticon-cctv:before { content: "\f107"; }
+.flaticon-folder:before { content: "\f108"; }
+.flaticon-television:before { content: "\f109"; }
+.flaticon-edit:before { content: "\f10a"; }
+.flaticon-megaphone:before { content: "\f10b"; }
+    
+    $font-Flaticon-semaphore-outlined-traffic-tool: "\f100";
+    $font-Flaticon-circular-shape-silhouette: "\f101";
+    $font-Flaticon-interface: "\f102";
+    $font-Flaticon-logout: "\f103";
+    $font-Flaticon-controls: "\f104";
+    $font-Flaticon-speaker: "\f105";
+    $font-Flaticon-dashboard: "\f106";
+    $font-Flaticon-cctv: "\f107";
+    $font-Flaticon-folder: "\f108";
+    $font-Flaticon-television: "\f109";
+    $font-Flaticon-edit: "\f10a";
+    $font-Flaticon-megaphone: "\f10b";

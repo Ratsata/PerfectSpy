@@ -1,0 +1,43 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 19/10/2017 18:01
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-semaphore-outlined-traffic-tool:before { content: "\f100"; }
+.flaticon-circular-shape-silhouette:before { content: "\f101"; }
+.flaticon-interface:before { content: "\f102"; }
+.flaticon-logout:before { content: "\f103"; }
+.flaticon-controls:before { content: "\f104"; }
+.flaticon-speaker:before { content: "\f105"; }
+.flaticon-dashboard:before { content: "\f106"; }
+.flaticon-cctv:before { content: "\f107"; }
+.flaticon-folder:before { content: "\f108"; }
+.flaticon-television:before { content: "\f109"; }
+.flaticon-edit:before { content: "\f10a"; }
+.flaticon-megaphone:before { content: "\f10b"; }

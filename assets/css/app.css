@@ -1,0 +1,235 @@
+/* roboto-100 - latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Roboto Thin'), local('Roboto-Thin'),
+    url('../fonts/roboto-v18-latin-100.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/roboto-v18-latin-100.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-300 - latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Roboto Light'), local('Roboto-Light'),
+    url('../fonts/roboto-v18-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/roboto-v18-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-regular - latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'),
+    url('../fonts/roboto-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/roboto-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-700 - latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'), local('Roboto-Bold'),
+    url('../fonts/roboto-v18-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/roboto-v18-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+body {
+    background: linear-gradient(to top, rgba(255,0,0,0), rgb(219, 219, 219)); 
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Roboto', sans-serif;
+}
+
+#main-menu {
+    background-color: #333;
+}
+
+.tx-soft-background {
+    background-color: #f6f6f6;
+}
+
+.tx-soft-background-alternate {
+    background-color: #f0f0f0;
+}
+
+#divCamara .video-feed {
+    min-height: 308px;
+}
+
+.tx-sensor-widget {
+    padding-right: 15px;
+}
+
+.tx-sensor-widget .tx-sensor-value {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.tx-sensor-widget .tx-sensor-unit {
+    font-size: 2rem;
+}
+
+.tx-sensor-widget img {
+    margin: 0 15px !important;
+}
+
+#led-new-visualization {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+}
+
+#led-new-visualization-icon {
+    display: inline-block;
+    text-align: center;
+    height: 100%;
+    vertical-align: top;
+}
+
+#led-new-visualization-icon img {
+    max-height: 100%;
+    padding: 1px;
+}
+
+#led-new-visualization-text {
+    display: inline-block;
+    height: 100%;
+    overflow: hidden;
+    text-align: left;
+    vertical-align: top;
+    line-height: 100%;
+}
+
+#led-new-visualization-text span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 16px;
+    padding: 0 7px 0 5px;
+}
+
+#led-icon-selector {
+    padding: 5px;
+    max-height: 350px;
+    overflow: auto;
+    border: 1px solid #aaa;
+}
+
+#led-icon-selector .tx-led-icon {
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 52px;
+    height: 52px;
+    padding: 10px;
+    margin: 1px;
+}
+
+#led-icon-selector .tx-led-icon:hover {
+    border: 1px solid #0f7ae5;
+    background-color: #f0f0f0;
+}
+
+#led-icon-selector .tx-led-icon.active {
+    background-color: #F1F9FF;
+    padding: 6px;
+    border: 5px solid #0f7ae5;
+}
+
+audio {
+    width: 100%;
+}
+
+/* Override colorpicker settings */
+.colorpicker {
+    z-index: 9999;
+}
+
+/* Override flaticon settings */
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    margin-left: auto !important;
+    font-size: inherit;
+}
+
+.pico-content, .pico-overlay {
+    display: none !important;
+}
+
+/*
+ * Custom New
+ */
+ .uk-button-success {
+    background-color: #86af49;
+    color: #fff;
+    border: 1px solid transparent;
+  }
+  /* Hover + Focus */
+  .uk-button-success:hover,
+  .uk-button-success:focus {
+    background-color: #7ca244;
+    color: #fff;
+  }
+  /* OnClick + Active */
+  .uk-button-success:active,
+  .uk-button-success.uk-active {
+    background-color: #617e35;
+    color: #fff;
+  }
+
+.dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: black;
+    margin-top: 5px;
+}
+
+.dot-green{
+    background-color: rgb(71, 177, 45);
+}
+
+.dot-yellow{
+    background-color: rgb(255, 255, 82);
+}
+
+.dot-red{
+    background-color: rgb(207, 38, 38);
+}
+
+.dot-gray{
+    background-color: rgb(133, 133, 133);
+}
+
+p.uk-align-left.estado{
+    margin-bottom: 10px;
+}
+
+.typewriter p {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation-iteration-count: infinite;
+    animation:
+      typing 1.5s steps(40, end) infinite,
+      blink-caret .75s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0% }
+    to { width: 30% }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
