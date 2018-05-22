@@ -54,8 +54,6 @@
 <!-- Menu -->
 <div class="uk-offcanvas-content">
 <div class="uk-grid-collapse uk-height-1-1" uk-grid>
-
-        
     
     <!-- Content -->
     <div class="uk-width-expand" style="position: relative;">
@@ -101,15 +99,10 @@
         <!-- Body Content -->
         <div class="uk-padding">
 
-            <div id="divCamara" class="uk-grid-small" uk-grid>
-                <div class="uk-width-expand uk-padding-small">
+            <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
+                <div  id="divCamara" class="uk-width-1-1@s uk-width-1-2@m uk-width-1-3@l uk-padding-small">
                     <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-medium">
-                        <h2 class="uk-margin-remove-bottom"><i class="flaticon-cctv"></i> PTZ 1</h2>
-                        <!-- <iframe src="http://<?= TX_CAMERA_SERVER_IP ?>/cell1.htm?cam=t1c1" class="uk-width-1-1 video-feed"></iframe>
-                        <div class="uk-margin-small-top">
-                            <button class="uk-button" title="Enfocar cámara" uk-tooltip="delay: 1000;"
-                                onclick="focusCamera('t1c1')"><i uk-icon="icon: expand"></i></button>
-                        </div> -->
+                        <h3 class="uk-margin-remove-bottom"><i class="flaticon-cctv"></i> PTZ 1</h3>
                         <div id="moduloCamara" class="uk-align-center">
                             
                         </div>
@@ -117,51 +110,29 @@
                 </div>
 
                 <!-- DIV PANTALLA -->
-                <div id="divPantalla" class="uk-width-expand uk-padding-small">
+                <div id="divPantalla" class="uk-width-1-1@s uk-width-1-2@m uk-width-1-3@l uk-padding-small">
                     <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-medium">
                         <div class="uk-grid-small" uk-grid>
                             <div class="uk-width-expand@m">
-                                <h2 class="uk-margin-remove-bottom">
+                                <h3 class="uk-margin-remove-bottom">
                                     <i class="flaticon-television"></i> PANTALLA LED
-                                </h2>
-
-                                <!-- <a href="#screen-modal" class="uk-button uk-button-primary uk-button-large uk-width-1-1"
-                                    uk-toggle>
-                                    <i class="flaticon-edit"></i>
-                                    Editar Mensaje LED
-                                </a>
-                                <div class="uk-padding-small uk-margin-small-top" style="background-color: #444444;">
-                                    <center>
-                                        <img src="<?= base_url('assets/img/led/current/current.jpg') ?>" class="uk-width-3-4 tx-current-led-screen"/>
-                                    </center>
-                                </div> -->
+                                </h3>
                                 <div id="moduloPantalla" class="uk-align-center">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
 
-                <!-- DIV CITOFONO --><
-                <div id="divCitofono" class="uk-width-1-4 uk-padding-small">
+                <!-- DIV CITOFONO -->
+                <div id="divCitofono" class="uk-width-1-1@s uk-width-1-2@m uk-width-1-3@l uk-padding-small">
                     <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-medium">
-                        <h2 class="uk-margin-remove-bottom"><i class="flaticon-megaphone"></i> CITOFONO</h2>
-                        <!-- <img id="citofonoCamera1" style="-webkit-user-select: none;" src="<?= TX_URL_CITOFONO ?>" class="uk-width-1-1 video-feed">
-                        <div class="uk-margin-small-top">
-                            <button class="uk-button uk-button-primary uk-button-large uk-width-1-1"
-                                        onclick="focusDoorbellCall('t1p1', false);">
-                                <i uk-icon="icon: phone"></i> Iniciar Videollamada
-                            </button>
-                        </div> -->
+                        <h3 class="uk-margin-remove-bottom"><i class="flaticon-megaphone"></i> CITOFONO</h3>
                         <div id="moduloCitofono" class="uk-align-center">
                         </div>
                     </div>
                 </div>
             </div>
-
-           
-
         </div>
     </div>
 
