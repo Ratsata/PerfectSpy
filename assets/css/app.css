@@ -233,3 +233,13 @@ p.uk-align-left.estado{
     from, to { border-color: transparent }
     50% { border-color: orange; }
   }
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    background-color: rgb(61, 61, 61);
+}
+
+.footer span{
+    color: white;
+}

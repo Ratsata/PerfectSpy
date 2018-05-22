@@ -139,14 +139,14 @@
     <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
         <div style="padding:0" class="uk-offcanvas-bar">
             <button class="uk-offcanvas-close" type="button" uk-close></button>
-            <div class="uk-padding uk-padding-small-top">
+            <div class="uk-padding uk-padding-small-top uk-height-1-1">
                 <img src="<?= base_url('assets/img/logo.png') ?>"/>
                 <ul class="uk-nav-primary uk-nav-parent-icon" uk-nav>
                     <li class="uk-active"><a href="<?= base_url('index.php')?>"><i class=" flaticon-dashboard"></i> Dashboard</a></li>
                     <li><a href="<?= base_url('index.php/config')?>"><i class=" flaticon-controls"></i> Configuraci&oacute;n</a></li>
                     <li><a href="#"><i class=" flaticon-logout"></i> Salir</a></li>
-                    
-                    <div style="margin-top: 100%">
+                </ul>
+                    <ul class="uk-nav-primary uk-nav-parent-icon" uk-nav>
                         <li>
                             <a id="toggleLista" class="uk-text-lead" uk-toggle="target: .listaEstados; animation: uk-animation-fade">Estado</a>
                             <div  id="txtBusqueda" class="uk-panel typewriter">
@@ -164,6 +164,10 @@
                 </ul>
             </div>
         </div>
+    </div>
+
+    <div class="footer uk-width-1-1">
+        <span>Status Bar</span>
     </div>
 </div>
 </div>
