@@ -30,7 +30,7 @@ $(document).ready(function () {
                         "</tr>"
                     ));
                 });
-                
+                UIkit.notification({message: '<span uk-icon=\'icon: check\'></span> Totem añadido con exito!', status: 'success'});
                 UIkit.modal("#totem-new-modal").hide();
             }
         });
@@ -66,7 +66,7 @@ $(document).ready(function () {
                         "</tr>"
                     ));
                 });
-                
+                UIkit.notification({message: '<span uk-icon=\'icon: check\'></span> Totem modificado con exito!', status: 'success'});
                 UIkit.modal("#totem-update-modal").hide();
             }
         });
@@ -144,6 +144,7 @@ function focusdeleteTotem(id,nombre){
                             "</tr>"
                         ));
                     });
+                    UIkit.notification({message: '<span uk-icon=\'icon: check\'></span> Totem eliminado con exito!', status: 'success'});
                 }
             });
     }, function () {}
