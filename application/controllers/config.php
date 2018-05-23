@@ -57,87 +57,101 @@ class Config extends CI_Controller
     }
 
     public function nuevo() {
-        $ip_camara = $this->input->post('ip-camara');
-        $ip_pantalla = $this->input->post('ip-pantalla');
-        $ip_citofono = $this->input->post('ip-citofono');
 
-        $estado_camara = ($ip_camara != '' ? 1 : 0);
-        $estado_pantalla = ($ip_pantalla != '' ? 1 : 0);
-        $estado_citofono = ($ip_citofono != '' ? 1 : 0);
-        
-        $data = file_get_contents('assets/data.json');
-        $config = json_decode($data, true);
-        $id = 0;
-        foreach ($config as $key) {
-            $id = ($key['id'] > $id ? $key['id'] : $id);
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nombre', 'Username', 'required|max_length[20]');
+        if ($this->form_validation->run() == FALSE){
+            echo json_encode("NOK");
+        }else{
+            $ip_camara = $this->input->post('ip-camara');
+            $ip_pantalla = $this->input->post('ip-pantalla');
+            $ip_citofono = $this->input->post('ip-citofono');
+
+            $estado_camara = ($ip_camara != '' ? 1 : 0);
+            $estado_pantalla = ($ip_pantalla != '' ? 1 : 0);
+            $estado_citofono = ($ip_citofono != '' ? 1 : 0);
+            
+            $data = file_get_contents('assets/data.json');
+            $config = json_decode($data, true);
+            $id = 0;
+            foreach ($config as $key) {
+                $id = ($key['id'] > $id ? $key['id'] : $id);
+            }
+            $data = array(
+                'id' => $id+1,
+                'nombre' => $this->input->post('nombre'),
+                'camara' => array(
+                    'ip' => $ip_camara,
+                    'estado' => $estado_camara
+                ),
+                'pantalla' => array(
+                    'ip' => $ip_pantalla,
+                    'estado' => $estado_pantalla
+                ),
+                'citofono' => array(
+                    'ip' => $ip_citofono,
+                    'estado' => $estado_citofono
+                )
+            );
+            
+            array_push($config, $data);
+            $fp = fopen('assets/data.json', 'w');
+                fwrite($fp, json_encode($config));
+            fclose($fp);
+
+            echo json_encode($config);
         }
-        $data = array(
-            'id' => $id+1,
-            'nombre' => $this->input->post('nombre'),
-            'camara' => array(
-                'ip' => $ip_camara,
-                'estado' => $estado_camara
-            ),
-            'pantalla' => array(
-                'ip' => $ip_pantalla,
-                'estado' => $estado_pantalla
-            ),
-            'citofono' => array(
-                'ip' => $ip_citofono,
-                'estado' => $estado_citofono
-            )
-        );
-        
-        array_push($config, $data);
-        $fp = fopen('assets/data.json', 'w');
-            fwrite($fp, json_encode($config));
-        fclose($fp);
-
-        echo json_encode($config);
     }
 
     public function modificar() {
-        $id = $this->input->post('id');
-        $ip_camara = $this->input->post('Uip-camara');
-        $ip_pantalla = $this->input->post('Uip-pantalla');
-        $ip_citofono = $this->input->post('Uip-citofono');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('id', 'Id', 'required');
+        $this->form_validation->set_rules('nombre', 'Username', 'required|max_length[20]');
+        if ($this->form_validation->run() == FALSE){
+            echo json_encode("NOK");
+        }else{
+            $id = $this->input->post('id');
+            $ip_camara = $this->input->post('Uip-camara');
+            $ip_pantalla = $this->input->post('Uip-pantalla');
+            $ip_citofono = $this->input->post('Uip-citofono');
 
-        $estado_camara = ($ip_camara != '' ? 1 : 0);
-        $estado_pantalla = ($ip_pantalla != '' ? 1 : 0);
-        $estado_citofono = ($ip_citofono != '' ? 1 : 0);
+            $estado_camara = ($ip_camara != '' ? 1 : 0);
+            $estado_pantalla = ($ip_pantalla != '' ? 1 : 0);
+            $estado_citofono = ($ip_citofono != '' ? 1 : 0);
 
-        $upd = array(
-            'id' => $id,
-            'nombre' => $this->input->post('nombre'),
-            'camara' => array(
-                'ip' => $ip_camara,
-                'estado' => $estado_camara
-            ),
-            'pantalla' => array(
-                'ip' => $ip_pantalla,
-                'estado' => $estado_pantalla
-            ),
-            'citofono' => array(
-                'ip' => $ip_citofono,
-                'estado' => $estado_citofono
-            )
-        );
-        
-        $data = file_get_contents('assets/data.json');
-        $config = json_decode($data, true);
-        
-        foreach ($config as $key => $value) {
-            if ($value['id'] == $id) {
-                $config[$key] = $upd;
-                break;
+            $upd = array(
+                'id' => $id,
+                'nombre' => $this->input->post('nombre'),
+                'camara' => array(
+                    'ip' => $ip_camara,
+                    'estado' => $estado_camara
+                ),
+                'pantalla' => array(
+                    'ip' => $ip_pantalla,
+                    'estado' => $estado_pantalla
+                ),
+                'citofono' => array(
+                    'ip' => $ip_citofono,
+                    'estado' => $estado_citofono
+                )
+            );
+            
+            $data = file_get_contents('assets/data.json');
+            $config = json_decode($data, true);
+            
+            foreach ($config as $key => $value) {
+                if ($value['id'] == $id) {
+                    $config[$key] = $upd;
+                    break;
+                }
             }
+
+            $fp = fopen('assets/data.json', 'w');
+                fwrite($fp, json_encode($config));
+            fclose($fp);
+
+            echo json_encode($config);
         }
-
-        $fp = fopen('assets/data.json', 'w');
-            fwrite($fp, json_encode($config));
-        fclose($fp);
-
-        echo json_encode($config);
     }
 
     public function eliminar() {

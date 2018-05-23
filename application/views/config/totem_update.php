@@ -11,7 +11,7 @@
                 <div class="uk-margin">
                     <label class="uk-form-label" for="nombre">Nombre</label>
                     <div class="uk-form-controls">
-                        <input id="nombre" name="nombre" class="uk-input" type="text" placeholder="Ej.: Totem 1"  maxlength="20">
+                        <input id="nombre" name="nombre" class="uk-input" type="text" placeholder="Ej.: Totem 1" maxlength="20" required>
                     </div>
                 </div>
                 <div class="uk-margin">
