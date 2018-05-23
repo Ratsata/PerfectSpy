@@ -249,7 +249,12 @@ p.uk-align-left.estado{
     vertical-align: middle;
     cursor: pointer;
 }
-                span.posMiddle{
-                    float: left;
-                    clear: left;
-                }
+
+span.posMiddle{
+    float: left;
+    clear: left;
+}
+
+#toggleLista{
+    color: rgb(231, 231, 231);
+}
