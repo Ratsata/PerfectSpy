@@ -1,7 +1,7 @@
-<div id="offcanvas-push" uk-offcanvas="mode: push;">
+<div id="offcanvas-push" uk-offcanvas="mode: push;overlay: true;">
     <div id="main-menu" class="uk-offcanvas-bar uk-padding-remove-horizontal">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
-        <div class="uk-padding uk-padding-small-top uk-height-1-1">
+        <div class="uk-padding uk-padding-small-top">
             <img src="<?= base_url('assets/img/logo.png') ?>"/>
             <ul class="uk-nav-primary uk-nav-parent-icon uk-margin-large uk-margin-remove-horizontal uk-margin-remove-top" uk-nav>
                 <li <?php if($activoIndex == 1){?> class="uk-active" <?php } ?> ><a href="<?= base_url('index.php')?>"><i class=" flaticon-dashboard"></i> Dashboard</a></li>

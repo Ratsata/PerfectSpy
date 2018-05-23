@@ -78,38 +78,41 @@ function focusnewTotem() {
 }
 
 function focusupdateTotem(id) {
+    
     $.ajax({
         data:   {"id":id},
         url:   'config/listar',
         type:  'POST',
         dateType:"json",
         success:  function (data){
-            var json = eval('('+ data +')');
-            var visible = false;
-            
-            $('#frmUpdate').data('id',json.id);
-            $("#nombre").attr("value",json.nombre);
-            UIkit.modal('#totem-update-modal').show();
-            
-            var visible = $('#Uip-camara').is(":visible")?true:false;
-            if (visible) UIkit.toggle("#toggleCamara").toggle();
-            if(json.camara.estado == 1){
-                $("#Uip-camara").attr("value",json.camara.ip);
-                UIkit.toggle("#toggleCamara").toggle();
-            }
+            if (data!=null){
+                var json = eval('('+ data +')');
+                var visible = false;
+                
+                $('#frmUpdate').data('id',json.id);
+                $("#nombre").attr("value",json.nombre);
+                UIkit.modal('#totem-update-modal').show();
+                
+                var visible = $('#Uip-camara').is(":visible")?true:false;
+                if (visible) UIkit.toggle("#toggleCamara").toggle();
+                if(json.camara.estado == 1){
+                    $("#Uip-camara").attr("value",json.camara.ip);
+                    UIkit.toggle("#toggleCamara").toggle();
+                }
 
-            var visible = $('#Uip-pantalla').is(":visible")?true:false;
-            if (visible) UIkit.toggle("#togglePantalla").toggle();
-            if(json.pantalla.estado == 1){
-                $("#Uip-pantalla").attr("value",json.pantalla.ip);
-                UIkit.toggle("#togglePantalla").toggle();
-            }
+                var visible = $('#Uip-pantalla').is(":visible")?true:false;
+                if (visible) UIkit.toggle("#togglePantalla").toggle();
+                if(json.pantalla.estado == 1){
+                    $("#Uip-pantalla").attr("value",json.pantalla.ip);
+                    UIkit.toggle("#togglePantalla").toggle();
+                }
 
-            var visible = $('#Uip-citofono').is(":visible")?true:false;
-            if (visible) UIkit.toggle("#toggleCitofono").toggle();
-            if(json.citofono.estado == 1){
-                $("#Uip-citofono").attr("value",json.citofono.ip);
-                UIkit.toggle("#toggleCitofono").toggle();
+                var visible = $('#Uip-citofono').is(":visible")?true:false;
+                if (visible) UIkit.toggle("#toggleCitofono").toggle();
+                if(json.citofono.estado == 1){
+                    $("#Uip-citofono").attr("value",json.citofono.ip);
+                    UIkit.toggle("#toggleCitofono").toggle();
+                }
             }
         }
     });
@@ -203,6 +206,7 @@ function panelLateral(){
                         "<span class='uk-align-right dot "+dotColorTotem+"'></span>"+
                         "</div>"
                     );
+                    $('#listaEstados').animate({scrollTop: $('#textdiv').prop("scrollHeight")}, 500);
                 });
             }else{
                 console.log("failed");
