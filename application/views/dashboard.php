@@ -48,6 +48,8 @@
        var TX_URL_CITOFONO = '<?= TX_URL_CITOFONO ?>';
        var base_url = '<?= base_url() ?>';
 
+       var idSeteado = '<?= $id ?>';
+
     </script>
 </head>
 <body>
@@ -63,9 +65,9 @@
             <div class="uk-grid-collapse" uk-grid>
             <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-push">
             <span uk-icon="icon: menu; ratio: 1.3"></span><a class="uk-visible@l"> Menu</a></button>
-                <div class="uk-width-expand uk-padding-small">
-                    <img src="<?= base_url('assets/img/icons/chevron-left.png') ?>" class="uk-visible@m" style="vertical-align: middle; cursor: pointer;" onclick="previousDashboard()"/>
-                    <div class="uk-display-inline-block uk-padding-small uk-padding-remove-bottom uk-padding-remove-top" style="vertical-align: middle;">
+                <div class="uk-width-expand uk-padding-small ">
+                    <img src="<?= base_url('assets/img/icons/chevron-left.png') ?>" class="uk-visible@m posMiddle" onclick="previousDashboard()"/|>
+                    <div class="uk-display-inline-block uk-padding-small uk-padding-remove-bottom uk-padding-remove-top posMiddle">
                         <div class="uk-text-small">Perfect Spy &raquo;</div>
                             <div uk-form-custom="target: > * > span:first-child">
                                 <select id="totemSelect">
@@ -84,14 +86,14 @@
                                     </span>
                                 </h1>
                             </div>
-                            <div id="dashboard-status" class="uk-text-small uk-text-muted" uk-tooltip>
-                                <span class="flaticon-circular-shape-silhouette uk-text-muted"></span>
-                                Estableciendo conexión...
-                            </div>
                         </div>
                     </div>
-                    <div class="uk-width-auto@m uk-width-1-4 uk-text-right uk-padding-small uk-visible@m">
-                        <img src="<?= base_url('assets/img/icons/chevron-right.png') ?>"  style="vertical-align: middle; cursor: pointer;" onclick="nextDashboard()"/>
+                    <div class="uk-align-center uk-visible@m">
+                        <span class="date posMiddle"></span>
+                        <h3><span class="time posMiddle"></span></h3>
+                    </div>
+                    <div class="uk-width-auto@m uk-width-1-4 uk-text-right uk-padding-small   uk-visible@m">
+                        <img src="<?= base_url('assets/img/icons/chevron-right.png') ?>" class="posMiddle" onclick="nextDashboard()"/|>
                     </div>
                 </div>
             </div>
@@ -166,8 +168,9 @@
         </div>
     </div>
 
-    <div class="footer uk-width-1-1">
-        <span>Status Bar</span>
+    <div class="footer uk-display-inline-block uk-width-1-1">
+        <b><span>&nbsp;Estado: </span></b>
+        <span id="dashboard-status">Estableciendo conexi&oacute;n...</span>
     </div>
 </div>
 </div>

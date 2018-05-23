@@ -122,6 +122,28 @@
                     </tbody>
                 </table>
             </div>
+            <!-- Año y mes -->
+<time>2015-07</time>
+ 
+ <!-- Fecha -->
+ <time>2015-07-26</time>
+  
+ <!-- Hora -->
+ <time>23:54</time>
+ <time>23:54:39</time>
+  
+ <!-- Fecha y hora -->
+ <time>2015-07-26T23:44</time>
+ <time>2015-07-26T11:44:17</time>
+ <time>2015-07-26 23:44</time>
+ <time>2015-07-26 23:44:17</time>
+  
+ <!-- Zona horaria -->
+ <time>Z</time>
+ <time>+0100</time>
+ <time>+01:00</time>
+ <time>-0800</time>
+ <time>-08:00</time>
         </div>
 
         <div id="modalUpdate"></div>

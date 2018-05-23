@@ -243,3 +243,13 @@ p.uk-align-left.estado{
 .footer span{
     color: white;
 }
+
+
+.posMiddle{
+    vertical-align: middle;
+    cursor: pointer;
+}
+                span.posMiddle{
+                    float: left;
+                    clear: left;
+                }

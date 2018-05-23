@@ -1,6 +1,9 @@
 $(document).ready(function () {
     cargaModulos();
-    UIkit.offcanvas("#offcanvas-push").show();
+    date_time('date_time');
+    if(!idSeteado){
+        UIkit.offcanvas("#offcanvas-push").show();
+    }
 
     $('#doorbell-modal').on('hidden.bs.modal', function (e) {
         $("#citofonoCamera1").removeAttr("hidden");
@@ -377,99 +380,37 @@ function llenarModulos(json){
     });
     
 }
-    /* var data = panelLateral();
-    if (data != "nok"){ */
-        /* var dataCamara =    "<a href='#screen-modal' class='uk-button uk-button-primary uk-button-large uk-width-1-1' uk-toggle>"+
-                            "<i class='flaticon-edit'></i>"+
-                            "Editar Mensaje LED"+
-                            "</a>"+
-                            "<div class='uk-padding-small uk-margin-small-top' style='background-color: #444444;'>"+
-                            "<center><img src='<?= base_url('assets/img/led/current/current.jpg') ?>' class='uk-width-3-4 tx-current-led-screen'/></center>"+
-                            "</div>";
-        $("#moduloCamara").append(dataCamara); */
-        /* var dataPantalla =  "<a href='#screen-modal' class='uk-button uk-button-primary uk-button-large uk-width-1-1' uk-toggle>"+
-                            "<i class='flaticon-edit'></i>"+
-                            "Editar Mensaje LED"+
-                            "</a>"+
-                            "<div class='uk-padding-small uk-margin-small-top' style='background-color: #444444;'>"+
-                            "<center><img src='<?= base_url('assets/img/led/current/current.jpg') ?>' class='uk-width-3-4 tx-current-led-screen'/></center>"+
-                            "</div>";
-        $("#moduloPantalla").append(dataPantalla); */
-        
-        
-        /*
-        console.log("OK! SUCCESS");
-        var json = eval('('+ data +')');
-        $.each(json, function(i, item){
-            if (item.onlineTotem==0) dotColorTotem = "dot-red";
-        
-            if (item.onlineCamara=="none") dotColorCamara = "dot-gray";
-            if (item.onlineCamara=="nok") dotColorCamara = "dot-red";
-            if (item.onlineCamara=="ok") dotColorCamara = "dot-green";
-            
-            if (item.onlinePantalla=="none") dotColorPantalla = "dot-gray";
-            if (item.onlinePantalla=="nok") dotColorPantalla = "dot-red";
-            if (item.onlinePantalla=="ok") dotColorPantalla = "dot-green";
-        
-            if (item.onlineCitofono=="none") dotColorCitofono = "dot-gray";
-            if (item.onlineCitofono=="nok") dotColorCitofono = "dot-red";
-            if (item.onlineCitofono=="ok") dotColorCitofono = "dot-green";
-        });*/
-    //}
-    /*  $.ajax({
-         url:   'index.php/seeker',
-         type:  'POST',
-         dateType:"json",
-         success:  function (data){
-             if (data){
-                 $("#txtBusqueda").empty();
-                 $("#txtBusqueda").append("&nbsp;");
 
-                 $("#listaEstados").empty();
-                 if ($('#listaEstados').is(":hidden")) UIkit.toggle("#toggleLista").toggle();
-
-                 var json = eval('('+ data +')');
-                 var dotColorTotem = "";
-
-                 $.each(json, function(i, item){
-                     if (item.onlineTotem==0) dotColorTotem = "dot-red";
-                     if (item.onlineTotem==1) dotColorTotem = "dot-yellow";
-                     if (item.onlineTotem==2) dotColorTotem = "dot-green";
-
-                     if (item.onlineCamara=="none") dotColorCamara = "dot-gray";
-                     if (item.onlineCamara=="nok") dotColorCamara = "dot-red";
-                     if (item.onlineCamara=="ok") dotColorCamara = "dot-green";
-                    
-                     if (item.onlinePantalla=="none") dotColorPantalla = "dot-gray";
-                     if (item.onlinePantalla=="nok") dotColorPantalla = "dot-red";
-                     if (item.onlinePantalla=="ok") dotColorPantalla = "dot-green";
-
-                     if (item.onlineCitofono=="none") dotColorCitofono = "dot-gray";
-                     if (item.onlineCitofono=="nok") dotColorCitofono = "dot-red";
-                     if (item.onlineCitofono=="ok") dotColorCitofono = "dot-green";
-                     $("#listaEstados").append(
-                         "<div class='uk-panel'>"+
-                         "<button class='uk-button uk-button-default uk-button-small uk-align-left' type='button'>"+item.nombre+"</button>"+
-                         "<div uk-dropdown>"+
-                         "<div class='uk-panel'>"+
-                         "<p class='uk-align-left estado'>Camara</p>"+
-                         "<span class='uk-align-right dot "+dotColorCamara+"'></span>"+
-                         "</div>"+
-                         "<div class='uk-panel'>"+
-                         "<p class='uk-align-left estado'>Pantalla</p>"+
-                         "<span class='uk-align-right dot "+dotColorPantalla+"'></span>"+
-                         "</div>"+
-                         "<div class='uk-panel'>"+
-                         "<p class='uk-align-left estado'>Citofono</p>"+
-                         "<span class='uk-align-right dot "+dotColorCitofono+"'></span>"+
-                         "</div>"+
-                         "</div>"+
-                         "<span class='uk-align-right dot "+dotColorTotem+"'></span>"+
-                         "</div>"
-                     );
-                 });
-             }else{
-                 console.log("failed");
-             }
-         }
-     }); */
+function date_time(id)
+{
+    date = new Date;
+    year = date.getFullYear();
+    month = date.getMonth();
+    months = new Array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+    d = date.getDate();
+    day = date.getDay();
+    days = new Array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+    h = date.getHours();
+    if(h<10){
+        h = "0"+h;
+    }
+    m = date.getMinutes();
+    if(m<10){
+        m = "0"+m;
+    }
+    s = date.getSeconds();
+    if(s<10){
+        s = "0"+s;
+    }
+    //result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m+':'+s;
+    date = ''+days[day]+' '+d+' '+months[month]+' '+year;
+    time = ''+h+':'+m+':'+s;
+    //document.getElementById(id).innerHTML = result;
+    //$("#date").empty();
+    /* $("#date").html(date);
+    $("#time").html(time); */
+    $(".date").html(date);
+    $(".time").html(time);
+    setTimeout('date_time("date");','1000');
+    return true;
+}
