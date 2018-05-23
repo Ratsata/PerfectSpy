@@ -40,17 +40,16 @@ class Config extends CI_Controller
 
     public function listar(){
         $id = $this->input->post('id');
-        $i = 0;
         $x = null;
 
         $config = file_get_contents('assets/data.json');
         $config = json_decode($config, true);
         
-        foreach ($config as $key) {
-            if ($key['id'] == $id){
-                $x = $i;
+        foreach ($config as $key=>$value) {
+            if ($value['id'] == $id){
+                $x = $key;
+                break;
             }
-            $i++;
         }
         
         echo json_encode($config[$x]);
@@ -130,6 +129,7 @@ class Config extends CI_Controller
         foreach ($config as $key => $value) {
             if ($value['id'] == $id) {
                 $config[$key] = $upd;
+                break;
             }
         }
 
@@ -145,12 +145,12 @@ class Config extends CI_Controller
         
         $data = file_get_contents('assets/data.json');
         $config = json_decode($data, true);
-        $i = 0;
-        foreach ($config as $key) {
-            if ($key['id'] == $id){
-                unset($config[$i]);
+
+        foreach ($config as $key=>$value) {
+            if ($value['id'] == $id){
+                unset($config[$key]);
+                break;
             }
-            $i++;
         }
         
         $fp = fopen('assets/data.json', 'w');
