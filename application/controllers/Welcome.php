@@ -40,8 +40,14 @@ class Welcome extends CI_Controller
         $json = file_get_contents('assets/data.json');
         $json = json_decode($json, true);
 
+        $data['activoIndex'] = 1;
+
         $data['json'] = $json;
-        $this->load->view('dashboard', $data);
-        
+        $this->load->view('header');
+        $this->load->view('dashboard/headerScript', $data);
+        $this->load->view('dashboard/index', $data);
+        $this->load->view('main-menu', $data);
+        $this->load->view('dashboard/modals', $data);
+        $this->load->view('dashboard/footer');
     }
 }

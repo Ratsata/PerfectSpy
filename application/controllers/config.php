@@ -11,8 +11,14 @@ class Config extends CI_Controller
         $data = [];
         $data['config'] = $config;
 
-        $this->load->view('config', $data);
-        $this->load->view('totem_new');
+        $data['activoIndex'] = 2;
+
+        $this->load->view('header');
+        $this->load->view('config/headerScript');
+        $this->load->view('config/index', $data);
+        $this->load->view('main-menu');
+        $this->load->view('config/totem_new');
+        $this->load->view('config/footer');
         $config = array(
             'id' => "",
             'nombre' => "",
@@ -29,7 +35,7 @@ class Config extends CI_Controller
                 'estado' => 0
             )
         );
-        $this->load->view('totem_update',$config);
+        $this->load->view('config/totem_update',$config);
     }
 
     public function listar(){
