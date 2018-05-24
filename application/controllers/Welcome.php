@@ -26,7 +26,7 @@ class Welcome extends Login_middleware
         $this->load->library('session');
         echo json_encode($this->session->userdata['logged_in']);
         if(!isset($this->session->userdata['logged_in'])){
-            $this->load->view('login_form');
+            $this->load->view('login');
         }
     }*/
 
