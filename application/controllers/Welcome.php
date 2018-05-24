@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+//session_start();
+require_once APPPATH . 'core/login_middleware.php';
 
-class Welcome extends CI_Controller
+class Welcome extends Login_middleware
 {
 
     /**
@@ -19,6 +21,15 @@ class Welcome extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+    /*public function __construct() {
+        parent::__construct();
+        $this->load->library('session');
+        echo json_encode($this->session->userdata['logged_in']);
+        if(!isset($this->session->userdata['logged_in'])){
+            $this->load->view('login_form');
+        }
+    }*/
+
     public function index($id="x")
     {
         if ($id != "x"){

@@ -6,7 +6,7 @@
             <ul class="uk-nav-primary uk-nav-parent-icon uk-margin-large uk-margin-remove-horizontal uk-margin-remove-top" uk-nav>
                 <li <?php if($activoIndex == 1){?> class="uk-active" <?php } ?> ><a href="<?= base_url('index.php')?>"><i class=" flaticon-dashboard"></i> Dashboard</a></li>
                 <li <?php if($activoIndex == 2){?> class="uk-active" <?php } ?> ><a href="<?= base_url('index.php/config')?>"><i class=" flaticon-controls"></i> Configuraci&oacute;n</a></li>
-                <li <?php if($activoIndex == 3){?> class="uk-active" <?php } ?> ><a href="#"><i class=" flaticon-logout"></i> Salir</a></li>
+                <li <?php if($activoIndex == 3){?> class="uk-active" <?php } ?> ><a href="auth/logout"><i class=" flaticon-logout"></i> Salir</a></li>
                 
             </ul>
             <hr class="uk-divider-icon">

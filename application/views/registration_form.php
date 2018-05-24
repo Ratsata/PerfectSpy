@@ -1,7 +1,7 @@
 <html>
 <?php
 if (isset($this->session->userdata['logged_in'])) {
-header("location: http://localhost/login/index.php/user_authentication/user_login_process");
+header("location: http://localhost/login/index.php/auth/login");
 }
 ?>
 <head>
@@ -18,7 +18,7 @@ header("location: http://localhost/login/index.php/user_authentication/user_logi
 echo "<div class='error_msg'>";
 echo validation_errors();
 echo "</div>";
-echo form_open('user_authentication/new_user_registration');
+echo form_open('auth/new_user_registration');
 
 echo form_label('Create Username : ');
 echo"<br/>";

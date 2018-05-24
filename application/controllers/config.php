@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH . 'core/login_middleware.php';
 
-class Config extends CI_Controller
+class Config extends Login_middleware
 {
     
     public function index()
