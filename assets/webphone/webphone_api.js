@@ -17,7 +17,8 @@ var parameters = {
                     password: '103', // preconfigured SIP account password                 
                     callto: '102',   
 					//other parameters are optional. See the documentation for the complete parameter list of available settings.
-                    loglevel: 0,
+                    loglevel: 1,
+                    logtoconsole : false,
                     language: 'es'
                  };
 
@@ -1072,7 +1073,7 @@ return wphone;
 window.wpa = window.webphone_api = webphone_api;
 
 webphone_api.bd_logged = false;webphone_api.getbasedir2 = function (forceauto)
-{try{if (forceauto !== true){var wpbdir = webphone_api.parameters['webphonebasedir'];if (typeof(wpbdir) === 'undefined' || wpbdir === null || wpbdir === '.' || wpbdir.length < 2) { wpbdir = ''; }wpbdir = wpbdir.toString(); try{ wpbdir = wpbdir.replace(/^\s+|\s+$/g, ''); } catch(err) { ; }if (wpbdir.indexOf('/') === 0) { wpbdir = wpbdir.substring(1); }if (wpbdir.length > 1 && wpbdir.lastIndexOf('/') < wpbdir.length - 1){wpbdir = wpbdir + '/';}if (wpbdir && wpbdir.length > 0){if (webphone_api.bd_logged !== true){try{console.log('base diectory - webphonebasedir(helper): ' + wpbdir);} catch(err){ }}webphone_api.bd_logged = true;return wpbdir;}}
-var scriptElements = document.getElementsByTagName('script');if(scriptElements){for (var i = 0; i < scriptElements.length; i++){wpbdir = scriptElements[i].src;if (wpbdir && wpbdir.indexOf('webphone_api.js') > -1){wpbdir = wpbdir.substring(0, wpbdir.indexOf('webphone_api.js'));if (webphone_api.bd_logged !== true){try{console.log('base diectory - webphonebasedir(guessed): ' + wpbdir);} catch(err){ }}webphone_api.bd_logged = true;return wpbdir;}}}}catch(err) { try{console.log('ERROR, webphone_api getbasedir2');} catch(err2) { ; } }return '';};
+{try{if (forceauto !== true){var wpbdir = webphone_api.parameters['webphonebasedir'];if (typeof(wpbdir) === 'undefined' || wpbdir === null || wpbdir === '.' || wpbdir.length < 2) { wpbdir = ''; }wpbdir = wpbdir.toString(); try{ wpbdir = wpbdir.replace(/^\s+|\s+$/g, ''); } catch(err) { ; }if (wpbdir.indexOf('/') === 0) { wpbdir = wpbdir.substring(1); }if (wpbdir.length > 1 && wpbdir.lastIndexOf('/') < wpbdir.length - 1){wpbdir = wpbdir + '/';}if (wpbdir && wpbdir.length > 0){if (webphone_api.bd_logged !== true){try{/* console.log('base diectory - webphonebasedir(helper): ' + wpbdir); */} catch(err){ }}webphone_api.bd_logged = true;return wpbdir;}}
+var scriptElements = document.getElementsByTagName('script');if(scriptElements){for (var i = 0; i < scriptElements.length; i++){wpbdir = scriptElements[i].src;if (wpbdir && wpbdir.indexOf('webphone_api.js') > -1){wpbdir = wpbdir.substring(0, wpbdir.indexOf('webphone_api.js'));if (webphone_api.bd_logged !== true){try{/* console.log('base diectory - webphonebasedir(guessed): ' + wpbdir); */} catch(err){ }}webphone_api.bd_logged = true;return wpbdir;}}}}catch(err) { try{console.log('ERROR, webphone_api getbasedir2');} catch(err2) { ; } }return '';};
 //webphone_api.loadscript (webphone_api.getbasedir2() + 'js/lib/api_helper.js', false);
 document.write('<script type="text/javascript" src="' + webphone_api.getbasedir2() + 'js/lib/api_helper.js"></script>');

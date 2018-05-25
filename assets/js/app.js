@@ -402,13 +402,9 @@ function date_time(id)
     if(s<10){
         s = "0"+s;
     }
-    //result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m+':'+s;
+    
     date = ''+days[day]+' '+d+' '+months[month]+' '+year;
     time = ''+h+':'+m+':'+s;
-    //document.getElementById(id).innerHTML = result;
-    //$("#date").empty();
-    /* $("#date").html(date);
-    $("#time").html(time); */
     $(".date").html(date);
     $(".time").html(time);
     setTimeout('date_time("date");','1000');

@@ -109,5 +109,5 @@ define('TX_SCREEN_FTP_BASE', '/');
 define('TX_UBICACION_PROYECTO', '/4294954831/4294954831/1/4_1.bmp');
 define('TX_URL_CITOFONO', 'http://192.168.1.125/HDP-1100PT/video.cgi');
 
-define('FILE_DATA' , 'assets/data.json');
-define('FILE_USER' , 'assets/user.json');
+define('FILE_DATA' , 'assets/data.cv');
+define('FILE_USER' , 'assets/user.cv');

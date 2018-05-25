@@ -13,7 +13,7 @@ class Config extends Login_middleware
     
     public function index()
     {
-        $config = $this->model_app->readJson(FILE_DATA);
+        $config = $this->model_app->readJson(FILE_DATA,false);
         $data = [];
         $data['config'] = $config;
 
@@ -58,7 +58,6 @@ class Config extends Login_middleware
         }
         
         echo json_encode($config[$x]);
-        
     }
 
     public function nuevo() {
