@@ -43,16 +43,7 @@ Class Auth extends CI_Controller {
                 );
                 $this->session->set_userdata('logged_in', $session_data);
                 if($this->input->post('remember')!=null){
-                    //$this->input->set_cookie("cookie_login",$result['user'],time()+3600*24*365);
-                    $this->input->set_cookie("cookie_login",$result['user'],3600*24*365,"localhost","/");
-                    /* $cookie =  array (
-                        'name'   => 'cookie_login' ,
-                        'value'  => $result['user'] ,
-                        'expire' => 3600*24*365 ,
-           
-                    );
-           
-                    set_cookie($cookie); */
+                    set_cookie("cookie_login",$result['user'],3600*24*365,"localhost","/");
                 }
                 redirect("index.php/welcome");
             } else {
