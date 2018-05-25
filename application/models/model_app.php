@@ -34,16 +34,18 @@ Class Model_app extends CI_Model {
         }
     }
 
-    public function encrypt(){
-        $config = file_get_contents('assets/data.json');
-        //$config = json_decode($config, true);
-        $ciphertext = $this->encryption->encrypt($config);
-        $data = $this->encryption->decrypt($ciphertext);
-        echo $data;
-        /* $data = $this->encrypt($config,"CleanVoltage");
-        $data2 = json_decode($this->decrypt($data,"CleanVoltage"));
-        echo json_encode($data2); */
-        //echo $data;
+    public function readJson($file){
+        $data = file_get_contents($file);
+        $dataDecrypt = $this->encryption->decrypt($data);
+        return json_decode($dataDecrypt,true);
+    }
+
+    public function writeJson($file,$data){
+        $dataEncrypt = $this->encryption->encrypt(json_encode($data));
+        $fp = fopen($file, 'w');
+            fwrite($fp, $dataEncrypt);
+        fclose($fp);
+        return true;
     }
 
 }

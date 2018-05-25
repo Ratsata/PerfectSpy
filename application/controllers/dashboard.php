@@ -29,6 +29,10 @@ class Dashboard extends Login_middleware
             $this->load->view('login');
         }
     }*/
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('model_app');
+    }
 
     public function index($id="x")
     {
@@ -46,11 +50,9 @@ class Dashboard extends Login_middleware
             'path' => TX_LED_DATA_PATH . '/icons',
             'icons' => $led_icons
         );
+
         $data['led'] = $led_data;
-
-        $json = file_get_contents('assets/data.json');
-        $json = json_decode($json, true);
-
+        $json = $this->model_app->readJson(FILE_DATA);
         $data['activoIndex'] = 1;
 
         $data['json'] = $json;

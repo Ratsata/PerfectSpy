@@ -7,15 +7,13 @@ class Config extends Login_middleware
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('encryption');
         $this->load->library('form_validation');
+        $this->load->model('model_app');
     }
     
     public function index()
     {
-        $config = file_get_contents('assets/data.json');
-        $config = $this->encryption->decrypt($config);
-        $config = json_decode($config);
+        $config = $this->model_app->readJson(FILE_DATA);
         $data = [];
         $data['config'] = $config;
 
@@ -50,10 +48,7 @@ class Config extends Login_middleware
 
         $id = $this->input->post('id');
         $x = null;
-
-        $config = file_get_contents('assets/data.json');
-        $config = $this->encryption->decrypt($config);
-        $config = json_decode($config, true);
+        $config = $this->model_app->readJson(FILE_DATA);
         
         foreach ($config as $key=>$value) {
             if ($value['id'] == $id){
@@ -80,9 +75,7 @@ class Config extends Login_middleware
             $estado_pantalla = ($ip_pantalla != '' ? 1 : 0);
             $estado_citofono = ($ip_citofono != '' ? 1 : 0);
             
-            $config = file_get_contents('assets/data.json');
-            $config = $this->encryption->decrypt($config);
-            $config = json_decode($config, true);
+            $config = $this->model_app->readJson(FILE_DATA);
             $id = 0;
             foreach ($config as $key) {
                 $id = ($key['id'] > $id ? $key['id'] : $id);
@@ -105,12 +98,12 @@ class Config extends Login_middleware
             );
             
             array_push($config, $data);
-            $ciphertext = $this->encryption->encrypt(json_encode($config));
-            $fp = fopen('assets/data.json', 'w');
-                fwrite($fp, $ciphertext);
-            fclose($fp);
-
-            echo json_encode($config);
+            
+            if($this->model_app->writeJson(FILE_DATA,$config)){
+                echo json_encode($config);
+            }else{
+                echo "NOK";
+            }
         }
     }
 
@@ -147,10 +140,7 @@ class Config extends Login_middleware
                 )
             );
             
-            $config = file_get_contents('assets/data.json');
-            $config = $this->encryption->decrypt($config);
-            $config = json_decode($config, true);
-            
+            $config = $this->model_app->readJson(FILE_DATA);
             foreach ($config as $key => $value) {
                 if ($value['id'] == $id) {
                     $config[$key] = $upd;
@@ -158,22 +148,18 @@ class Config extends Login_middleware
                 }
             }
 
-            $ciphertext = $this->encryption->encrypt(json_encode($config));
-            $fp = fopen('assets/data.json', 'w');
-                fwrite($fp, $ciphertext);
-            fclose($fp);
-
-            echo json_encode($config);
+            if($this->model_app->writeJson(FILE_DATA,$config)){
+                echo json_encode($config);
+            }else{
+                echo "NOK";
+            }
         }
     }
 
     public function eliminar() {
         
         $id = $this->input->post('id');
-        
-        $config = file_get_contents('assets/data.json');
-        $config = $this->encryption->decrypt($config);
-        $config = json_decode($config, true);
+        $config = $this->model_app->readJson(FILE_DATA);
 
         foreach ($config as $key=>$value) {
             if ($value['id'] == $id){
@@ -182,23 +168,10 @@ class Config extends Login_middleware
             }
         }
         
-        $ciphertext = $this->encryption->encrypt(json_encode($config));
-        $fp = fopen('assets/data.json', 'w');
-            fwrite($fp, $ciphertext);
-        fclose($fp);
-
-        echo json_encode($config);
-    }
-
-    public function encrypt(){
-        $config = file_get_contents('assets/data.json');
-        //$config = json_decode($config, true);
-        $ciphertext = $this->encryption->encrypt($config);
-        $data = $this->encryption->decrypt($ciphertext);
-        echo $data;
-        /* $data = $this->encrypt($config,"CleanVoltage");
-        $data2 = json_decode($this->decrypt($data,"CleanVoltage"));
-        echo json_encode($data2); */
-        //echo $data;
+        if($this->model_app->writeJson(FILE_DATA,$config)){
+            echo json_encode($config);
+        }else{
+            echo "NOK";
+        }
     }
 }
