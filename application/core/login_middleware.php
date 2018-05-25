@@ -7,8 +7,15 @@ Class Login_middleware extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
-        if(!$this->session->has_userdata('logged_in')){
-            redirect('index.php');
+        $this->load->helper('cookie');
+        $cookie_login = get_cookie("cookie_login");
+        if($cookie_login!=null){
+            delete_cookie('cookie_login');
+            set_cookie("cookie_login",$cookie_login,3600*24*365,"localhost","/");
+        }else{
+            if(!$this->session->has_userdata('logged_in')){
+                redirect('index.php');
+            }
         }
     }
 
