@@ -2,6 +2,11 @@
 
 Class Model_app extends CI_Model {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->library('encryption');
+    }
+
     public function registration_insert($data) {
         $condition = "user_name =" . "'" . $data['user_name'] . "'";
         $this->db->select('*');
@@ -29,27 +34,16 @@ Class Model_app extends CI_Model {
         }
     }
 
-    function encrypt($string, $key) {
-        $result = '';
-        for($i=0; $i<strlen($string); $i++){
-           $char = substr($string, $i, 1);
-           $keychar = substr($key, ($i % strlen($key))-1, 1);
-           $char = chr(ord($char)+ord($keychar));
-           $result.=$char;
-        }
-        return base64_encode($result);
-    }
-
-    function decrypt($string, $key) {
-        $result = '';
-        $string = base64_decode($string);
-        for($i=0; $i<strlen($string); $i++) {
-           $char = substr($string, $i, 1);
-           $keychar = substr($key, ($i % strlen($key))-1, 1);
-           $char = chr(ord($char)-ord($keychar));
-           $result.=$char;
-        }
-        return $result;
+    public function encrypt(){
+        $config = file_get_contents('assets/data.json');
+        //$config = json_decode($config, true);
+        $ciphertext = $this->encryption->encrypt($config);
+        $data = $this->encryption->decrypt($ciphertext);
+        echo $data;
+        /* $data = $this->encrypt($config,"CleanVoltage");
+        $data2 = json_decode($this->decrypt($data,"CleanVoltage"));
+        echo json_encode($data2); */
+        //echo $data;
     }
 
 }

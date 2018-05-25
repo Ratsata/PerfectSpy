@@ -3,10 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Seeker extends CI_Controller
 {
+    public function __construct() {
+        parent::__construct();
+        $this->load->library('encryption');
+    }
     
     public function index()
     {
         $config = file_get_contents('assets/data.json');
+        $config = $this->encryption->decrypt($config);
         $config = json_decode($config, true);
         
         $data = [];
