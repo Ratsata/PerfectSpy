@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //session_start();
 require_once APPPATH . 'core/login_middleware.php';
 
-class Welcome extends Login_middleware
+class Dashboard extends Login_middleware
 {
 
     /**

@@ -14,6 +14,10 @@ Class Auth extends CI_Controller {
     }
 
     public function index() {
+        $cookie_login = get_cookie("cookie_login");
+        if($cookie_login!=null || $this->session->has_userdata('logged_in')){
+            redirect('index.php/dashboard');
+        }
         $this->load->view('header');
         $this->load->view('login');
     }
@@ -24,7 +28,7 @@ Class Auth extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
             if($this->session->has_userdata('logged_in')){
-                redirect("index.php/welcome");
+                redirect("index.php/dashboard");
             }else{
                 $this->load->view('header');
                 $this->load->view('login');
@@ -45,7 +49,7 @@ Class Auth extends CI_Controller {
                 if($this->input->post('remember')!=null){
                     set_cookie("cookie_login",$result['user'],3600*24*365,"localhost","/");
                 }
-                redirect("index.php/welcome");
+                redirect("index.php/dashboard");
             } else {
                 $data = array(
                     'error_message' => 'Usuario o contraseña incorrecta'
