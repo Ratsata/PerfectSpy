@@ -173,4 +173,12 @@ class Config extends Login_middleware
             echo "NOK";
         }
     }
+
+    public function user(){
+        $this->load->view('header');
+        $this->load->view('config/headerScript');
+        $this->load->view('config/user_config');
+        $this->load->view('main-menu');
+        $this->load->view('config/footer');
+    }
 }
