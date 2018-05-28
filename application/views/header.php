@@ -16,4 +16,4 @@
     <?= link_tag('assets/css/uikit.css') ?>
     <?= link_tag('assets/css/click2call.css') ?>
     <?= link_tag('assets/css/app.css') ?>
-    <?= link_tag('https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css') ?>
+    <?= link_tag('assets/css/bootstrap.min.css') ?>

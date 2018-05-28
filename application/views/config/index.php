@@ -18,7 +18,7 @@
                         <div class="uk-navbar-left">
                             <ul class="uk-navbar-nav">
                                 <li class="uk-active"><a class="menu-navbar" href="#">General</a></li>
-                                <li><a class="menu-navbar" href="config/user">Usuario</a></li>
+                                <li><a class="menu-navbar" href="<?=base_url('index.php/config/user')?>">Usuario</a></li>
                             </ul>
                         </div>
                     </nav>

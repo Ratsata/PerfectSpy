@@ -52,8 +52,9 @@ Class Auth extends CI_Controller {
                 redirect("index.php/dashboard");
             } else {
                 $data = array(
-                    'error_message' => 'Usuario o contraseña incorrecta'
+                    'error_message' => 'Error: Usuario o contraseña incorrecta'
                 );
+                $this->load->view('header');
                 $this->load->view('login', $data);
             }
         }
@@ -65,6 +66,23 @@ Class Auth extends CI_Controller {
         }
         $this->session->sess_destroy();
         redirect("index.php");
+    }
+
+    public function recover() {
+        $this->load->view('header');
+        $this->load->view('recover');
+    }
+
+    public function correo() {
+        $this->load->library('email');
+
+        $this->email->from('PerfectSpy@CleanVoltage.com', 'Perfect Spy');
+        $this->email->to('sebastian.vega.saavedra@gmail.com');
+        $this->email->subject('[PerfectSpy] Restablecer contraseña');
+        $mensaje = "Se ha solicitado restablecer su contraseña\n"+
+        "la contraseña por defecto es: 1234";
+        $this->email->message($mensaje);
+        $this->email->send();
     }
 
 }

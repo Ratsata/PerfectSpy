@@ -71,6 +71,26 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#frmUser').on( "submit", function( e ) {
+        e.preventDefault();
+        form_data = $(this).serialize();
+        $.ajax({
+            data:  form_data,
+            url:   'modificarUser',
+            type:  'POST',
+            dateType:"json",
+            success:  function (data){
+                var json = eval('('+ data +')');
+                if(data){
+                    UIkit.notification({message: '<span uk-icon=\'icon: check\'></span> Usuario modificado con exito!', status: 'success'});
+                }else{
+                    UIkit.notification({message: 'Error... intentelo mas tarde', status: 'danger'});
+                }
+                activeInputs(false);
+            }
+        });
+    });
 });
 
 function focusnewTotem() {
@@ -213,4 +233,10 @@ function panelLateral(){
             }
         }
     });
+}
+
+function activeInputs(sw=true){
+    $("#btnModificar").attr("disabled",sw);
+    //$(".inputUser").addClass("uk-input:disabled, .uk-select:disabled, .uk-textarea:disabled");
+    $(".inputUser").attr("disabled",!sw);
 }

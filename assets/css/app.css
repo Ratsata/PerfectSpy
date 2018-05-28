@@ -285,3 +285,7 @@ span.posMiddle{
 .menu-navbar{
     font-size: 50px;
 }
+
+.none{
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}

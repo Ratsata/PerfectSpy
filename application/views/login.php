@@ -5,6 +5,7 @@
             <div class="uk-panel">
                 <img src="<?= base_url('assets/img/logo.png') ?>"/>
                 <hr><br>
+                <b><?=$error_message?></b>
                 <?php echo form_open('index.php/auth/login', 'class="uk-panel uk-panel-box uk-form"');  ?>
                     <div class="uk-form-row">
                         <input id="name" name="username" class="uk-width-1-1 uk-form-large" type="text" placeholder="Usuario">
@@ -17,7 +18,7 @@
                     </div>
                     <div class="uk-form-row uk-text-small">
                         <label class="uk-float-left"><input id="remember" name="remember" type="checkbox"> Recordar</label>
-                        <a class="uk-float-right uk-link uk-link-muted" href="#"> Recuperar contraseña</a>
+                        <a class="uk-float-right uk-link uk-link-muted" href="<?=base_url('index.php/auth/recover')?>"> Recuperar contraseña</a>
                     </div>
                 <?php echo form_close(); ?>
             </div>

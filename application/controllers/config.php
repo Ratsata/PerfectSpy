@@ -175,10 +175,37 @@ class Config extends Login_middleware
     }
 
     public function user(){
+        $config = $this->model_app->readJson(FILE_USER);
+        $data = [];
+        $data['config'] = $config;
+
         $this->load->view('header');
         $this->load->view('config/headerScript');
-        $this->load->view('config/user_config');
+        $this->load->view('config/user_config', $data);
         $this->load->view('main-menu');
         $this->load->view('config/footer');
+    }
+
+    public function modificarUser(){
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[20]');
+        $this->form_validation->set_rules('email', 'Correo', 'required|max_length[50]');
+        $this->form_validation->set_rules('usuario', 'Usuario', 'required|max_length[20]');
+        $this->form_validation->set_rules('hash', 'Contraseña', 'required|max_length[20]');
+        if ($this->form_validation->run() == FALSE){
+            echo json_encode("NOK");
+        }else{
+            $config = array(
+                'nombre' => $this->input->post('nombre'),
+                'email' => $this->input->post('email'),
+                'user' => $this->input->post('usuario'),
+                'hash' => $this->input->post('hash')
+            );
+
+            if($this->model_app->writeJson(FILE_USER,$config)){
+                echo json_encode($config);
+            }else{
+                echo false;
+            }
+        }
     }
 }
