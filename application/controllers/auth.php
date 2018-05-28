@@ -74,15 +74,76 @@ Class Auth extends CI_Controller {
     }
 
     public function correo() {
-        $this->load->library('email');
-
+        
+        /* $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'sebastian.vega.saavedra@gmail.com', // change it to yours
+            'smtp_pass' => '123sebaa',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE
+        ); */
+        /* $this->load->library('email');
         $this->email->from('PerfectSpy@CleanVoltage.com', 'Perfect Spy');
         $this->email->to('sebastian.vega.saavedra@gmail.com');
-        $this->email->subject('[PerfectSpy] Restablecer contraseña');
-        $mensaje = "Se ha solicitado restablecer su contraseña\n"+
-        "la contraseña por defecto es: 1234";
-        $this->email->message($mensaje);
-        $this->email->send();
+        $this->email->subject('PerfectSpy Restablecer contraseña');
+        $this->email->message('Se ha solicitado restablecer');
+        $r = $this->email->send();
+        if(!$r)echo $this->email->print_debugger(); */
+
+		/* $mensaje = "Mensaje";
+		$asunto = "Perfect Spy";
+		$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+		$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$cabeceras .= 'From: PerfectSpy <perfectspy@cleanvoltage.com>' . "\r\n";
+		$bool = mail("sebastian.vega.saavedra@gmail.com", $asunto, $mensaje,$cabeceras);
+		echo $bool; */
+        
+        
+        /* $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'sebastian.vega.saavedra@gmail.com',
+            'smtp_pass' => '123sebaa',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE  
+     
+          );
+          $this->load->library('email', $config);
+          $this->email->set_newline("\r\n");   */
+        /* $this->load->library('email');
+        $config = array();
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.gmail.com';
+        $config['smtp_user'] = 'sebastian.vega.saavedra@gmail.com';
+        $config['smtp_pass'] = '123sebaa';
+        $config['smtp_port'] = 465;
+        $this->email->initialize($config);
+        $this->email->set_newline("\r\n"); */
+
+       /*  $this->email->from('PerfectSpy@CleanVoltage.com', 'Perfect Spy');
+        $this->email->to('sebastian.vega.saavedra@gmail.com');
+        $this->email->subject('PerfectSpy Restablecer contraseña');
+        $this->email->message('Se ha solicitado restablecer');
+        $r = $this->email->send();
+        if(!$r)echo $this->email->print_debugger(); */
+        /* $from_email = "sebastian.vega.saavedra@gmail.com";
+        $to_email = "sebastian.vega.saavedra@gmail.com";
+        $this->load->library('email');
+        $this->email->from($from_email, 'Identification');
+        $this->email->to($to_email);
+        $this->email->subject('Send Email Codeigniter');
+        $this->email->message('The email send using codeigniter library');
+        //Send mail
+        if($this->email->send()){
+            echo "ok";
+        }else{
+            echo $this->email->print_debugger();
+        } */
     }
 
 }

@@ -1,9 +1,9 @@
 $(document).ready(function () {
     cargaModulos();
     date_time('date_time');
-    if(!idSeteado){
+    /* if(!idSeteado){
         UIkit.offcanvas("#offcanvas-push").show();
-    }
+    } */
 
     $('#doorbell-modal').on('hidden.bs.modal', function (e) {
         $("#citofonoCamera1").removeAttr("hidden");
@@ -257,6 +257,13 @@ function panelLateral(){
         dateType:"json",
         success:  function (data){
             if (data){
+                if (data == "[]"){
+                    data = null;
+                    $("#txtBusqueda").empty();
+                    $("#txtBusqueda").append("&nbsp;");
+                    if ($('#listaEstados').is(":hidden")) UIkit.toggle("#toggleLista").toggle();
+                }else{
+
                 $("#txtBusqueda").empty();
                 $("#txtBusqueda").append("&nbsp;");
 
@@ -302,7 +309,7 @@ function panelLateral(){
                         "<span class='uk-align-right dot "+dotColorTotem+"'></span>"+
                         "</div>"
                     );
-                });
+                });}
                 llenarModulos(json);
             }
         }
@@ -326,6 +333,12 @@ function llenarModulos(json){
     $("#moduloPantalla").empty();
     $("#moduloCitofono").empty();
     $("#dashboard-status").empty();
+    if(!json){
+        $("#divTotem").attr("hidden",false);
+        $("#divCamara").fadeOut();
+        $("#divPantalla").fadeOut();
+        $("#divCitofono").fadeOut();
+    }
     $.each(json, function(i, item){
         if(id_select == item.id){
             if (item.onlineCamara=="ok"){
@@ -378,7 +391,6 @@ function llenarModulos(json){
             if (item.onlineTotem==2) $("#dashboard-status").append(  "Conexi&oacute;n establecida");
         }
     });
-    
 }
 
 function date_time(id)

@@ -11,7 +11,7 @@
                     <div class="uk-margin">
                         <label class="uk-form-label" for="nombre">Correo</label>
                         <div class="uk-form-controls">
-                            <form id="recover">
+                            <form  action="<?=base_url('index.php/auth/correo')?>">
                                 <input name="nombre" class="uk-input" type="text" placeholder="Ej.: correo@correo.com" required maxlength="20">        
                                 <input class="uk-width-1-1 uk-button uk-button-danger uk-button-large button-login" type="submit" value="Enviar..." name="submit"/>
                             </form>

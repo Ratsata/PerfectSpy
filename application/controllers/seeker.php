@@ -11,12 +11,8 @@ class Seeker extends CI_Controller
     
     public function index()
     {
-        /* $config = file_get_contents('assets/data.json');
-        $config = $this->encryption->decrypt($config);
-        $config = json_decode($config, true); */
         $config = $this->model_app->readJson(FILE_DATA);
         $data = [];
-        $i = 0;
         
         foreach ($config as $key=>$value) {
             $onlineCamara = "nok";
