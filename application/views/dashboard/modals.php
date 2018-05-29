@@ -78,6 +78,11 @@
                               style="padding: 4px; vertical-align: middle; border: 1px solid #ccc;">
                             <div style="background-color: #000000; width: 24px; height: 24px;"></div>
                         </span> Color de fondo
+                        <!-- <div class="picker-wrapper uk-padding-small uk-width-1-2">
+                            <button type="button" class="btn btn-default">Color fondo</button>
+                            <div class="color-picker">
+                            </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -138,7 +143,7 @@
         </div>
         <div id="c2k_container_0" title="" style="text-align: center; display: none !important;">
             <!--rewrite the CALLTO and uncomment the following line to enable support for ancient browsers-->
-            <!--<a href="tel://CALLTO" id="c2k_alternative_url">CALLTO</a>-->
+            <a href="tel://CALLTO" id="c2k_alternative_url">CALLTO</a>
         </div>
     </div>
 </div>

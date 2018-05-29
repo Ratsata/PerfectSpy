@@ -216,7 +216,7 @@ function focusCamera(cameraCode) {
     }
 }
 
-function focusDoorbellCall(cameraCode, call) {
+function focusDoorbellCall() {
     if ($('#doorbell-modal img').attr('src') == '') {
         $('#citofonoCamera1').hide();
         $('#doorbell-modal img').attr('src', TX_URL_CITOFONO);
@@ -371,7 +371,7 @@ function llenarModulos(json){
             if (item.onlineCitofono=="ok"){
                 $("#moduloCitofono").append("<img id='citofonoCamera1' style='-webkit-user-select: none;' src='"+ipCitofono+"' class='uk-width-1-1 video-feed'>"+
                                 "<div class='uk-margin-small-top'>"+
-                                "<button class='uk-button uk-button-primary uk-button-large uk-width-1-1' onclick='focusDoorbellCall('t1p1', false);'>"+
+                                "<button class='uk-button uk-button-primary uk-button-large uk-width-1-1' onclick='focusDoorbellCall();'>"+
                                 "<i uk-icon='icon: phone'></i> Iniciar Videollamada"+
                                 "</button>"+
                                 "</div>");
