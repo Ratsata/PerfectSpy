@@ -11,6 +11,15 @@ Class Auth extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->model('model_app');
+        
+        if(!file_exists(FILE_DATA)){
+            $data = [];
+            $this->model_app->writeJson(FILE_DATA,$data);
+        }
+        if(!file_exists(FILE_USER)){
+            $data = array("nombre"=>"Administrador","email"=>"","user"=>DEFAULT_USER,"hash"=>DEFAULT_HASH);
+            $this->model_app->writeJson(FILE_USER,$data);
+        }
     }
 
     public function index() {
@@ -144,6 +153,17 @@ Class Auth extends CI_Controller {
         }else{
             echo $this->email->print_debugger();
         } */
+        /* if($this->model_app->writeJson(FILE_DATA,$config)){
+            echo json_encode($config);
+        }else{
+            echo "NOK";
+        } */
+        $correo = $this->model_app->readJson(FILE_USER,false);
+        $correo = json_encode($correo);
+        print_r ($correo);
+        print ($correo);
+        printf($correo);
+        echo($correo);
     }
 
 }
