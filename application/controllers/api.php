@@ -19,7 +19,8 @@ class Api extends CI_Controller
                 $this->imagebmp($bmp, $imgbmp_path);
                 
                 $uploaded = $this->transfer_image_to_screen($imgbmp_path);
-
+                
+                //$this->pixel($img_path);
                 if ($uploaded) {
                     $data['status'] = true;
                 }
@@ -170,5 +171,61 @@ class Api extends CI_Controller
         }
 
         return false;
+    }
+
+    private function pixel($file){
+        $pixel = 5; // Tamaño del pixel
+        $getImagen = $file;
+        $imagen = imagecreatefromjpeg($getImagen); 
+        if(!$imagen) exit('ERROR');
+        list($ancho,$alto)=getimagesize($getImagen);
+        $superficieTotal = $ancho*$alto;    
+        //
+        $superficieRecorrida = 0;
+        $auxX=0;
+        $auxY=0;
+        while($superficieRecorrida <= $superficieTotal){
+            $posX=0;$posY=0;$data = array();
+            while($posX <= $pixel and (($auxX + $posX) < $ancho)){
+                $posY=0;
+                while($posY <= $pixel and (($auxY + $posY) < $alto)){
+                    $rgb = imagecolorat($imagen, ($auxX + $posX), ($auxY + $posY));
+                    $r = ($rgb >> 16) & 0xFF;
+                    $g = ($rgb >> 8) & 0xFF;
+                    $b = $rgb & 0xFF;
+                    $data[] = array($r,$g,$b);
+                    $posY++;
+                }
+                $posX++;
+            }
+ 
+            // Busco promedio
+            $r = 0; $g = 0; $b = 0;
+            foreach($data as $d){
+                $r+= $d[0];
+                $g+= $d[1];
+                $b+= $d[2];
+            }
+            $totalArray = count($data);
+            if($totalArray == 0) $totalArray = 1;
+            $r = $r/$totalArray;
+            $g = $g/$totalArray;
+            $b = $b/$totalArray;
+            $colorPromedio = imagecolorallocate($imagen, $r, $g, $b);
+            imagefilledrectangle($imagen, $auxX, $auxY, ($auxX + $pixel), ($auxY + $pixel), $colorPromedio);
+            //
+            $auxX+= $pixel;
+            if($auxX >= $ancho){
+                $auxX = 0;
+                $auxY+= ($pixel+1);
+            }       
+            $superficieRecorrida+= $pixel*$pixel;
+ 
+        }
+        //
+        Header("Content-type: image/jpeg");
+        imagejpeg($imagen);
+        echo $imagen;
+        imagedestroy($imagen);
     }
 }

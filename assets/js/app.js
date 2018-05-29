@@ -89,18 +89,15 @@ function updateLedScreen() {
 }
 
 function createImageFromDiv(container) {
+    html2canvas($(container)[0], {logging:false}).then(function(canvas){
+        theCanvas = canvas;
+        document.body.appendChild(canvas);
+        // Convert to image
+        $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
+        ledSettings.new = $("#led-img-output img").attr('src'); 
+        document.body.removeChild(canvas);
 
-    html2canvas($(container), {
-        onrendered: function (canvas) {
-            theCanvas = canvas;
-            document.body.appendChild(canvas);
-            // Convert to image
-            $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
-            ledSettings.new = $("#led-img-output img").attr('src');
-            document.body.removeChild(canvas);
-
-            uploadLedImage(ledSettings.new, 'base64');
-        }
+        uploadLedImage(ledSettings.new, 'base64');
     });
 }
 
@@ -361,7 +358,7 @@ function llenarModulos(json){
                                 "Editar Mensaje LED"+
                                 "</a>"+
                                 "<div class='uk-padding-small uk-margin-small-top' style='background-color: #444444;'>"+
-                                "<center><img src='"+base_url+"assets/img/led/current/current.jpg' class='uk-width-3-4 tx-current-led-screen'/></center>"+
+                                "<center><img src='"+base_url+"assets/img/led/current/current.jpg' class='tx-current-led-screen'/></center>"+
                                 "</div>");
             }else if(item.onlinePantalla=="nok"){
                 $("#moduloPantalla").append("<center>"+

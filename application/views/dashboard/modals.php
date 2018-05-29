@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<div id="screen-modal" uk-modal="bg-close: false">
+<div id="screen-modal" class="uk-modal-container" uk-modal="bg-close: false">
     <div class="uk-modal-dialog uk-modal-body">
         <h2 class="uk-modal-title">ACTUALIZAR PANTALLA</h2>
         <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
@@ -97,7 +97,7 @@
             </div>
 
         </form>
-        <div id="led-img-output" class="uk-hidden"></div>
+        <div id="led-img-output" style="height=268;width:428" class="uk-hidden"></div>
 
         <p class="uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>

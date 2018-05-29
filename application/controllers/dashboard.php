@@ -45,8 +45,10 @@ class Dashboard extends Login_middleware
         $data['led'] = [];
         $led_data = array(
             'current' => TX_LED_DATA_PATH . '/current/current.jpg',
-            'width' => 214,
-            'height' => 134,
+            /* 'width' => 214,
+            'height' => 134, */
+            'width' => 383,
+            'height' => 256,
             'path' => TX_LED_DATA_PATH . '/icons',
             'icons' => $led_icons
         );
