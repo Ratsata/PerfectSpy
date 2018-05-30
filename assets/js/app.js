@@ -216,35 +216,14 @@ function focusCamera(cameraCode) {
     }
 }
 
-function focusDoorbellCall() {
+function focusDoorbellCall(nombre="CIT&Oacute;FONO") {
     if ($('#doorbell-modal img').attr('src') == '') {
         $('#citofonoCamera1').hide();
         $('#doorbell-modal img').attr('src', TX_URL_CITOFONO);
+        $('#titleCitofono').empty();
+        $('#titleCitofono').append(nombre);
     }
     UIkit.modal('#doorbell-modal').show();
-}
-
-function forceCall() {
-    webphone_api.reject();
-    setTimeout(function () {
-        webphone_api.call(webphone_api.parameters.callto);
-    }, 1000)
-}
-
-function answerCall() {
-    $('#tx-webphone-controls').hide();
-    $('#tx-webphone-connecting').show();
-    webphone_api.reject();
-    setTimeout(function () {
-        webphone_api.call(webphone_api.parameters.callto);
-        $('#tx-webphone-controls').show();
-        $('#tx-webphone-connecting').hide();
-    }, 1000)
-}
-
-function webphonePrime() {
-    console.log('tx: Priming webphone');
-    webphone_api.call(webphone_api.parameters.callto);
 }
 
 function panelLateral(){
@@ -338,6 +317,7 @@ function llenarModulos(json){
     }
     $.each(json, function(i, item){
         if(id_select == item.id){
+            nombreCitofono = "Citofono: "+$("#totemSelect option:selected").text();
             if (item.onlineCamara=="ok"){
                 $("#moduloCamara").append("<iframe src='http://<?= TX_CAMERA_SERVER_IP ?>/cell1.htm?cam=t1c1' class='uk-width-1-1 video-feed'></iframe>"+
                                 "<div class='uk-margin-small-top'>"+
@@ -371,7 +351,7 @@ function llenarModulos(json){
             if (item.onlineCitofono=="ok"){
                 $("#moduloCitofono").append("<img id='citofonoCamera1' style='-webkit-user-select: none;' src='"+ipCitofono+"' class='uk-width-1-1 video-feed'>"+
                                 "<div class='uk-margin-small-top'>"+
-                                "<button class='uk-button uk-button-primary uk-button-large uk-width-1-1' onclick='focusDoorbellCall();'>"+
+                                "<button class='uk-button uk-button-primary uk-button-large uk-width-1-1' onclick='focusDoorbellCall(\" "+nombreCitofono+" \");'>"+
                                 "<i uk-icon='icon: phone'></i> Iniciar Videollamada"+
                                 "</button>"+
                                 "</div>");

@@ -115,35 +115,26 @@
 
 <div id="doorbell-modal" class="uk-modal" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
-        <h1 class="uk-modal-title uk-text-center uk-margin-remove-bottom"><i class="flaticon-megaphone"></i> CIT&Oacute;FONO
-            T1P1
+        <h1 class="uk-modal-title uk-text-center uk-margin-remove-bottom">
+            <i class="flaticon-megaphone"></i> <a id="titleCitofono">CIT&Oacute;FONO</a>
         </h1>
         <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
 
         <img id="citofonoCamera2" style="-webkit-user-select: none;" src="" class="uk-width-1-1 video-feed">
 
         <div id="tx-webphone-controls" class="uk-text-center">
-        <div id="c2k_container_0" title="" style="text-align: center;"></div>
-            <button class="uk-button uk-button-large uk-button-primary tx-webphone-call" onclick="forceCall();"
-                    disabled="disabled">Llamar
+        <div id="c2k_container_0" title="" style="text-align: center; display: none !important;"></div>
+            <button id="tx-webphone-call" class="uk-button uk-button-large uk-button-primary tx-webphone" onclick="forceCall();">Llamar
             </button>
-            <button class="uk-button uk-button-large uk-button-secondary tx-webphone-answer" onclick="answerCall();"
-                    style="display: none">
-                Contestar
-            </button>
-            <button class="uk-button uk-button-large uk-button-danger tx-webphone-hangup"
-                    onclick="webphone_api.hangup();"
+            <button id="tx-webphone-hangup" class="uk-button uk-button-large uk-button-danger tx-webphone"
+                    onclick="forceHangout();"
                     style="display: none;">Colgar
             </button>
         </div>
-        <div id="tx-webphone-connecting" class="uk-text-center" style="display: none;">
+        <div id="tx-webphone-connecting" class="uk-text-center tx-webphone" style="display: none;">
             <button class="uk-button uk-button-large tx-webphone-connecting" disabled="disabled">
                 Conectando llamada...
             </button>
-        </div>
-        <div id="c2k_container_0" title="" style="text-align: center; display: none !important;">
-            <!--rewrite the CALLTO and uncomment the following line to enable support for ancient browsers-->
-            <a href="tel://CALLTO" id="c2k_alternative_url">CALLTO</a>
         </div>
     </div>
 </div>

@@ -1,8 +1,8 @@
 //document.write('<script type="text/javascript" src="webphone_api.js"></script>');
 
 /** Customizations */
-var call_button_text = 'Llamar';      // text showed on call button
-var hangup_button_text = 'Colgar';      // text showed on hangup button
+var call_button_text = 'Call';      // text showed on call button
+var hangup_button_text = 'Hangup';      // text showed on hangup button
 var call_button_color = '#43b61b';      // call button color
 var hangup_button_color = '#e83232';    // hangup button color
 var status_text_color = '#ffffff';      // color of displayed status messages
@@ -79,7 +79,7 @@ webphone_api.onCallStateChange(function (status, direction, peername, peerdispla
         if (!isNull(armodal))
         {
             lastoop = 6;
-            armodal.close();
+            //armodal.close();
             lastoop = 7;
         }
     }catch (ein) { ; }
@@ -94,7 +94,7 @@ webphone_api.onCallStateChange(function (status, direction, peername, peerdispla
         if (!isNull(armodal))
         {
             lastoop = 10;
-            armodal.close();
+            //armodal.close();
             lastoop = 11;
             armodal = null;
         }
@@ -723,7 +723,7 @@ function AcceptRejectPopup(from)
         
         function HandleEventBtnPos(event)
         {
-            armodal.close();
+            //armodal.close();
             PutToDebugLog(5,"EVENT, click2call AcceptRejectPopup Accept onclick");
             webphone_api.accept();
         }
@@ -744,7 +744,7 @@ function AcceptRejectPopup(from)
 
         function HandleEventBtnNeg(event)
         {
-            armodal.close();
+            //armodal.close();
             PutToDebugLog(5,"EVENT, click2call AcceptRejectPopup Reject onclick");
             webphone_api.reject();
         }

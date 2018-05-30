@@ -1,4 +1,4 @@
-document.write('<script type="text/javascript" src="webphone_api.js"></script>');
+//document.write('<script type="text/javascript" src="webphone_api.js"></script>');
 
 /** Customizations */
 var call_button_text = 'Llamar';      // text showed on call button

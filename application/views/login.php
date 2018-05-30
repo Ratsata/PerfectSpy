@@ -8,7 +8,7 @@
                 <b><?=$error_message?></b>
                 <?php echo form_open('index.php/auth/login', 'class="uk-panel uk-panel-box uk-form"');  ?>
                     <div class="uk-form-row">
-                        <input id="name" name="username" class="uk-width-1-1 uk-form-large" type="text" placeholder="Usuario">
+                        <input id="name" name="username" class="uk-width-1-1 uk-form-large" type="text" placeholder="Usuario" autofocus="true">
                     </div>
                     <div class="uk-form-row">
                         <input id="password" name="password" class="uk-width-1-1 uk-form-large" type="password" placeholder="Contraseña">

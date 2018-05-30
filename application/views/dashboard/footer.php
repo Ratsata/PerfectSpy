@@ -12,9 +12,10 @@
 <script src="<?= base_url('assets/js/html2canvas.js') ?>"></script>
 <script src="<?= base_url('assets/js/canvas2image.js') ?>"></script>
 <script src="<?= base_url('assets/js/recordmp3.js') ?>"></script>
+<script src="<?= base_url('assets/webphone/webphone_api.js?jscodeversion=2') ?>"></script>
+<script src="<?= base_url('assets/webphone/js/click2call/click2call.js?jscodeversion=2') ?>"></script>
+<script src="<?= base_url('assets/js/sip.js') ?>"></script>
 <script src="<?= base_url('assets/js/app.js') ?>"></script>
-<script src="<?= base_url('assets/webphone/webphone_api.js?jscodeversion=1') ?>"></script>
-<script src="<?= base_url('assets/webphone/js/click2call/click2call.js?jscodeversion=1') ?>"></script>
 <script src="<?=base_url('assets/js/piklor.min.js')?>"></script>
 <script src="<?=base_url('assets/js/handlers.js')?>"></script>
         
