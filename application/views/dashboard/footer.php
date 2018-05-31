@@ -18,6 +18,7 @@
 <script src="<?= base_url('assets/js/app.js') ?>"></script>
 <script src="<?=base_url('assets/js/piklor.min.js')?>"></script>
 <script src="<?=base_url('assets/js/handlers.js')?>"></script>
+<script src="<?=base_url('assets/js/vxgplayer-1.8.31.js')?>"></script>
         
    
 

@@ -52,7 +52,7 @@ class Seeker extends CI_Controller
                 $onlineTotem = 0;
             }
             
-            array_push($data,array("id"=>$id,"nombre"=>$nombre,"onlineCamara"=>$onlineCamara,"onlinePantalla"=>$onlinePantalla,"onlineCitofono"=>$onlineCitofono,"onlineTotem"=>$onlineTotem));
+            array_push($data,array("id"=>$id,"nombre"=>$nombre,"onlineCamara"=>$onlineCamara,"ipCamara"=>$ipCamara,"onlinePantalla"=>$onlinePantalla,"ipPantalla"=>$ipPantalla,"onlineCitofono"=>$onlineCitofono,"ipCitofono"=>$ipCitofono,"onlineTotem"=>$onlineTotem));
         }
         echo json_encode($data);
     }

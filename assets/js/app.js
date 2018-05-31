@@ -200,9 +200,9 @@ function updateScreenMockup() {
 
 }
 
-function focusCamera(cameraCode) {
-
-    if (cameraCode === 't1c1') {
+function focusCamera(ipCamara) {
+    window.location.href = "http://"+ipCamara;
+    /* if (cameraCode === 't1c1') {
         if ($('#camera-modal iframe').attr('src') == '') {
             $('#camera-modal iframe').attr('src', 'http://<?= TX_CAMERA_SERVER_IP ?>/cameracontrol.htm?cam-type=ptz&cam=' + cameraCode);
         }
@@ -213,13 +213,13 @@ function focusCamera(cameraCode) {
             $('#camera-modal2 iframe').attr('src', 'http://<?= TX_CAMERA_SERVER_IP ?>/cameracontrol.htm?cam-type=ptz&cam=' + cameraCode);
         }
         UIkit.modal('#camera-modal2').show();
-    }
+    } */
 }
 
 function focusDoorbellCall(nombre="CIT&Oacute;FONO") {
     if ($('#doorbell-modal img').attr('src') == '') {
         $('#citofonoCamera1').hide();
-        $('#doorbell-modal img').attr('src', TX_URL_CITOFONO);
+        $('#doorbell-modal img').attr('src', $('#citofonoCamera1').attr('src'));
         $('#titleCitofono').empty();
         $('#titleCitofono').append(nombre);
     }
@@ -318,19 +318,20 @@ function llenarModulos(json){
     $.each(json, function(i, item){
         if(id_select == item.id){
             nombreCitofono = "Citofono: "+$("#totemSelect option:selected").text();
-            if (item.onlineCamara=="ok"){
-                $("#moduloCamara").append("<iframe src='http://<?= TX_CAMERA_SERVER_IP ?>/cell1.htm?cam=t1c1' class='uk-width-1-1 video-feed'></iframe>"+
+            if (item.onlineCitofono=="ok"){
+                $("#moduloCitofono").append("<img id='citofonoCamera1' style='-webkit-user-select: none;' src='http://"+item.ipCitofono+urlCitofono+"' class='uk-width-1-1 video-feed'>"+
                                 "<div class='uk-margin-small-top'>"+
-                                "<button class='uk-button' title='Enfocar cámara' uk-tooltip='delay: 1000;'"+
-                                "onclick='focusCamera('t1c1')'><i uk-icon='icon: expand'></i></button>"+
+                                "<button class='uk-button uk-button-primary uk-button-large uk-width-1-1' onclick='focusDoorbellCall(\" "+nombreCitofono+" \");'>"+
+                                "<i uk-icon='icon: phone'></i> Iniciar Videollamada"+
+                                "</button>"+
                                 "</div>");
-            }else if(item.onlineCamara=="nok"){
-                $("#moduloCamara").append("<center>"+
+            }else if(item.onlineCitofono=="nok"){
+                $("#moduloCitofono").append("<center>"+
                     "<span style='margin-top:100px' uk-icon='icon: warning; ratio: 10'></span>"+
                     "<br><a>Error de Conexion</a>"+
                     "</center>");
             }else{
-                $("#divCamara").fadeOut();
+                $("#divCitofono").fadeOut();
             }
             if (item.onlinePantalla=="ok"){
                 $("#moduloPantalla").append("<a href='#screen-modal' class='uk-button uk-button-primary uk-button-large uk-width-1-1' uk-toggle>"+
@@ -348,20 +349,24 @@ function llenarModulos(json){
             }else{
                 $("#divPantalla").fadeOut();
             }
-            if (item.onlineCitofono=="ok"){
-                $("#moduloCitofono").append("<img id='citofonoCamera1' style='-webkit-user-select: none;' src='"+ipCitofono+"' class='uk-width-1-1 video-feed'>"+
+            if (item.onlineCamara=="ok"){
+                $("#moduloCamara").append("<div class='vxgplayer' id='vxg_media_player1'></div>"+
                                 "<div class='uk-margin-small-top'>"+
-                                "<button class='uk-button uk-button-primary uk-button-large uk-width-1-1' onclick='focusDoorbellCall(\" "+nombreCitofono+" \");'>"+
-                                "<i uk-icon='icon: phone'></i> Iniciar Videollamada"+
-                                "</button>"+
+                                "<button class='uk-button' title='Enfocar cámara' uk-tooltip='delay: 1000;'"+
+                                "onclick='focusCamera(\""+item.ipCamara+"\")'><i uk-icon='icon: expand'></i></button>"+
                                 "</div>");
-            }else if(item.onlineCitofono=="nok"){
-                $("#moduloCitofono").append("<center>"+
+                inicializarCamara(item.ipCamara);
+                width = $("#moduloCamara").width();
+                vxgplayer("vxg_media_player1").size(width,300);
+                vxgplayer("vxg_media_player1").src('rtsp://admin:cleanvoltage2018@192.168.1.108/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif');
+                vxgplayer("vxg_media_player1").play();
+            }else if(item.onlineCamara=="nok"){
+                $("#moduloCamara").append("<center>"+
                     "<span style='margin-top:100px' uk-icon='icon: warning; ratio: 10'></span>"+
                     "<br><a>Error de Conexion</a>"+
                     "</center>");
             }else{
-                $("#divCitofono").fadeOut();
+                $("#divCamara").fadeOut();
             }
             if (item.onlineTotem==0) $("#dashboard-status").append(  "Error en la conexi&oacute;n");
             if (item.onlineTotem==1) $("#dashboard-status").append(  "Conexi&oacute;n establecida con algunos errores...");
@@ -398,4 +403,22 @@ function date_time(id)
     $(".time").html(time);
     setTimeout('date_time("date");','1000');
     return true;
+}
+
+function inicializarCamara(ip){
+    vxgplayer("vxg_media_player1",{
+        nmf_path: 'media_player.nmf',
+        nmf_src: '/pnacl/Release/media_player.nmf',
+        latency: 300000,
+        aspect_ratio_mode: 1,
+        autohide: 3,
+        controls: true,
+        connection_timeout: 5000,
+        connection_udp: 0,
+        custom_digital_zoom: false
+    }).ready(function(){
+        vxgplayer("vxg_media_player1").size(350,300);
+        vxgplayer("vxg_media_player1").src('rtsp://'+PTZ_USER+":"+PTZ_PASS+"@"+ip+PTZ_URL);
+        vxgplayer("vxg_media_player1").play();
+    });
 }

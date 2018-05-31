@@ -14,7 +14,10 @@
             status: 0, gpios: [11]
         }
     };
-    var ipCitofono = '<?= TX_URL_CITOFONO ?>';
+    var urlCitofono = '<?= TX_URL_CITOFONO ?>';
+    var PTZ_USER = '<?=PTZ_USER?>';
+    var PTZ_PASS = '<?=PTZ_PASS?>';
+    var PTZ_URL = '<?=PTZ_URL?>';
 
 
     var sensorsData = {
