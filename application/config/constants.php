@@ -106,7 +106,7 @@ define('TX_SCREEN_FTP_USERNAME', 'pi');
 define('TX_SCREEN_FTP_PASSWORD', 'un01centtectronix');*/
 define('TX_SCREEN_FTP_BASE', '/');
 //define('TX_SCREEN_FTP_BASE', 'Perfect-Spy/app/');
-define('TX_UBICACION_PROYECTO', '/4294954831/4294954831/1/4_1.bmp');
+define('TX_UBICACION_PROYECTO', '/192.168.1.240/192.168.1.240/1/3_1.bmp');
 define('TX_URL_CITOFONO', '/HDP-1100PT/video.cgi');
 
 define('FILE_DATA' , 'assets/data.cv');

@@ -105,8 +105,8 @@
         <div id="led-img-output" style="height=268;width:428" class="uk-hidden"></div>
 
         <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
-            <button class="uk-button uk-button-primary" type="button"
+            <button class="uk-button uk-button-default uk-modal-close">Cancelar</button>
+            <button class="uk-button uk-button-primary"
                     onclick="updateLedScreen();">Actualizar Pantalla
             </button>
         </p>

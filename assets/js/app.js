@@ -120,7 +120,7 @@ function uploadLedImage(ledImage, format) {
             // Update the current led image
             var d = new Date();
             var n = d.getTime();
-            $('.tx-current-led-screen').attr('src', ledSettings.current + '?timestamp=' + n);
+            $('.tx-current-led-screen').attr('src', '/tectronix/perfectspy/assets/img/led/current/current.jpg' + '?timestamp=' + n);
 
             UIkit.notification({
                 message: 'Pantalla Led actualizada',

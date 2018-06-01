@@ -9,8 +9,8 @@ class Api extends CI_Controller
         $data['status'] = false;
         $new_img = $this->input->post('image');
         if ($new_img) {
-            $img_path = FCPATH . TX_LED_DATA_PATH . '/current/current.jpg';
-            $imgbmp_path = FCPATH . TX_LED_DATA_PATH . '/current/current.bmp';
+            $img_path = FCPATH . TX_LED_DATA_PATH . '\current\current.jpg';
+            $imgbmp_path = FCPATH . TX_LED_DATA_PATH . '\current\current.bmp';
             $saved = $this->base64_to_jpeg($new_img, $img_path);
             
 
@@ -76,63 +76,7 @@ class Api extends CI_Controller
         return true;
     }
 
-    public function upload_recording()
-    {
-        $data['status'] = true;
-        // pull the raw binary data from the POST array
-        $data = substr($_POST['data'], strpos($_POST['data'], ",") + 1);
-        // decode it
-        $decodedData = base64_decode($data);
-        // print out the raw data,
-        //echo ($decodedData);
-        // write the data out to the file
-        $current_file = FCPATH . 'assets/recordings/current.mp3';
-        $fp = fopen($current_file, 'wb');
-        fwrite($fp, $decodedData);
-        fclose($fp);
-
-        $filename = 'audio_recording_' . date('Y-m-d-H-i-s') . '.mp3';
-        copy($current_file, FCPATH . 'assets/recordings/history/' . $filename);
-
-        // Send file to raspberry
-        $data['status'] = $this->transfer_audio_to_server($current_file);
-        echo json_encode($data);
-    }
-
-    public function upload_audio_file()
-    {
-        $data['status'] = false;
-
-        if ($_FILES) {
-            $current_file = FCPATH . 'assets/recordings/current.mp3';
-            print_r($_FILES);
-            if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $current_file)) {
-                $filename = 'audio_recording_' . date('Y-m-d-H-i-s') . '.mp3';
-                copy($current_file, FCPATH . 'assets/recordings/history/' . $filename);
-
-                // Send file to raspberry
-                $data['status'] = $this->transfer_audio_to_server($current_file);
-            }
-
-        }
-
-        echo json_encode($data);
-    }
-
-    private function transfer_audio_to_server($audio_path)
-    {
-        $this->load->library('ftp');
-
-        $config['hostname'] = TX_SCREEN_FTP_IP;
-        $config['username'] = TX_SCREEN_FTP_USERNAME;
-        $config['password'] = TX_SCREEN_FTP_PASSWORD;
-
-        $this->ftp->connect($config);
-        $result = $this->ftp->upload($audio_path, TX_SCREEN_FTP_BASE . '/current.mp3', 'auto', 0664);
-        $this->ftp->close();
-
-        return $result;
-    }
+  
 
     private function transfer_image_to_screen($img_path)
     {
@@ -141,9 +85,11 @@ class Api extends CI_Controller
         $config['hostname'] = TX_SCREEN_FTP_IP;
         $config['username'] = TX_SCREEN_FTP_USERNAME;
         $config['password'] = TX_SCREEN_FTP_PASSWORD;
-
+        /* $config['hostname'] = '192.168';
+        $config['username'] = 'root';
+        $config['password'] = '1234'; */
         $this->ftp->connect($config);
-        $result = $this->ftp->upload($img_path, TX_UBICACION_PROYECTO, 'auto', 0664);
+            $result = $this->ftp->upload($img_path, TX_UBICACION_PROYECTO, 'auto', 0664);
         $this->ftp->close();
 
         return $result;
@@ -171,61 +117,5 @@ class Api extends CI_Controller
         }
 
         return false;
-    }
-
-    private function pixel($file){
-        $pixel = 5; // Tamaño del pixel
-        $getImagen = $file;
-        $imagen = imagecreatefromjpeg($getImagen); 
-        if(!$imagen) exit('ERROR');
-        list($ancho,$alto)=getimagesize($getImagen);
-        $superficieTotal = $ancho*$alto;    
-        //
-        $superficieRecorrida = 0;
-        $auxX=0;
-        $auxY=0;
-        while($superficieRecorrida <= $superficieTotal){
-            $posX=0;$posY=0;$data = array();
-            while($posX <= $pixel and (($auxX + $posX) < $ancho)){
-                $posY=0;
-                while($posY <= $pixel and (($auxY + $posY) < $alto)){
-                    $rgb = imagecolorat($imagen, ($auxX + $posX), ($auxY + $posY));
-                    $r = ($rgb >> 16) & 0xFF;
-                    $g = ($rgb >> 8) & 0xFF;
-                    $b = $rgb & 0xFF;
-                    $data[] = array($r,$g,$b);
-                    $posY++;
-                }
-                $posX++;
-            }
- 
-            // Busco promedio
-            $r = 0; $g = 0; $b = 0;
-            foreach($data as $d){
-                $r+= $d[0];
-                $g+= $d[1];
-                $b+= $d[2];
-            }
-            $totalArray = count($data);
-            if($totalArray == 0) $totalArray = 1;
-            $r = $r/$totalArray;
-            $g = $g/$totalArray;
-            $b = $b/$totalArray;
-            $colorPromedio = imagecolorallocate($imagen, $r, $g, $b);
-            imagefilledrectangle($imagen, $auxX, $auxY, ($auxX + $pixel), ($auxY + $pixel), $colorPromedio);
-            //
-            $auxX+= $pixel;
-            if($auxX >= $ancho){
-                $auxX = 0;
-                $auxY+= ($pixel+1);
-            }       
-            $superficieRecorrida+= $pixel*$pixel;
- 
-        }
-        //
-        Header("Content-type: image/jpeg");
-        imagejpeg($imagen);
-        echo $imagen;
-        imagedestroy($imagen);
     }
 }
