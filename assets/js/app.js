@@ -410,14 +410,16 @@ function inicializarCamara(ip){
         nmf_path: 'media_player.nmf',
         nmf_src: '/pnacl/Release/media_player.nmf',
         latency: 300000,
-        aspect_ratio_mode: 1,
+        aspect_ratio_mode: 2,
         autohide: 3,
-        controls: true,
+        controls: false,
         connection_timeout: 5000,
         connection_udp: 0,
         custom_digital_zoom: false
     }).ready(function(){
-        vxgplayer("vxg_media_player1").size(350,300);
+        var width = $("#moduloCamara").width();
+        //width = width - 500;
+        vxgplayer("vxg_media_player1").size(parseInt(width),300);
         vxgplayer("vxg_media_player1").src('rtsp://'+PTZ_USER+":"+PTZ_PASS+"@"+ip+PTZ_URL);
         vxgplayer("vxg_media_player1").play();
     });
