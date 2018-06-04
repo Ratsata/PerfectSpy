@@ -65,7 +65,6 @@
                 <div  id="divCamara" class="uk-width-1-1@s uk-width-1-2@m uk-width-1-3@l uk-padding-small">
                     <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-medium">
                         <h3 class="uk-margin-remove-bottom"><i class="flaticon-cctv"></i> PTZ 1</h3>
-                        
                         <div id="moduloCamara" class="uk-align-center">    
                         </div>
                     </div>

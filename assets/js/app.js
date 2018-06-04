@@ -350,7 +350,7 @@ function llenarModulos(json){
                 $("#divPantalla").fadeOut();
             }
             if (item.onlineCamara=="ok"){
-                $("#moduloCamara").append("<div class='vxgplayer' id='vxg_media_player1' width='200'></div>"+
+                $("#moduloCamara").append("<div class='vxgplayer' id='vxg_media_player1'></div>"+
                                 "<div class='uk-margin-small-top'>"+
                                 "<button class='uk-button' title='Enfocar cámara' uk-tooltip='delay: 1000;'"+
                                 "onclick='focusCamera(\""+item.ipCamara+"\")'><i uk-icon='icon: expand'></i></button>"+
@@ -412,14 +412,12 @@ function inicializarCamara(ip){
         latency: 300000,
         aspect_ratio_mode: 2,
         autohide: 3,
-        width : 100,
         controls: false,
         connection_timeout: 5000,
         connection_udp: 0,
         custom_digital_zoom: false
     }).ready(function(){
         var width = $("#moduloCamara").width();
-        //width = width - 500;
         vxgplayer("vxg_media_player1").size(parseInt(width),300);
         vxgplayer("vxg_media_player1").src('rtsp://'+PTZ_USER+":"+PTZ_PASS+"@"+ip+PTZ_URL);
         vxgplayer("vxg_media_player1").play();

@@ -1113,8 +1113,8 @@ window.vxgplayer.browserSupportsPluginPnacl = function() {
 
 window.vxgplayer.showGlobalErrorMessage = function(id, html){
 	var player = document.getElementById(id);
-	var width=640;
-	var height=480;
+	var width = $("#moduloCamara").width() ? $("#moduloCamara").width() : 300;
+	var height=300;
 	width = parseInt(player.width,10) || width;
 	height = parseInt(player.height,10) || height;
 	player.style.width = width + 'px';
