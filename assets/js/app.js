@@ -350,16 +350,16 @@ function llenarModulos(json){
                 $("#divPantalla").fadeOut();
             }
             if (item.onlineCamara=="ok"){
-                $("#moduloCamara").append("<div class='vxgplayer' id='vxg_media_player1'></div>"+
+                $("#moduloCamara").append("<div class='vxgplayer' id='vxg_media_player1' width='200'></div>"+
                                 "<div class='uk-margin-small-top'>"+
                                 "<button class='uk-button' title='Enfocar cámara' uk-tooltip='delay: 1000;'"+
                                 "onclick='focusCamera(\""+item.ipCamara+"\")'><i uk-icon='icon: expand'></i></button>"+
                                 "</div>");
                 inicializarCamara(item.ipCamara);
-                width = $("#moduloCamara").width();
+                /* width = $("#moduloCamara").width();
                 vxgplayer("vxg_media_player1").size(width,300);
                 vxgplayer("vxg_media_player1").src('rtsp://admin:cleanvoltage2018@192.168.1.108/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif');
-                vxgplayer("vxg_media_player1").play();
+                vxgplayer("vxg_media_player1").play(); */
             }else if(item.onlineCamara=="nok"){
                 $("#moduloCamara").append("<center>"+
                     "<span style='margin-top:100px' uk-icon='icon: warning; ratio: 10'></span>"+
@@ -412,6 +412,7 @@ function inicializarCamara(ip){
         latency: 300000,
         aspect_ratio_mode: 2,
         autohide: 3,
+        width : 100,
         controls: false,
         connection_timeout: 5000,
         connection_udp: 0,
