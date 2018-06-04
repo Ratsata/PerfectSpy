@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once APPPATH . 'core/login_middleware.php';
+require_once APPPATH . 'core/Login_middleware.php';
 
 class Config extends Login_middleware
 {
@@ -8,12 +8,12 @@ class Config extends Login_middleware
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
-        $this->load->model('model_app');
+        $this->load->model('Model_app');
     }
     
     public function index()
     {
-        $config = $this->model_app->readJson(FILE_DATA,false);
+        $config = $this->Model_app->readJson(FILE_DATA,false);
         $data = [];
         $data['config'] = $config;
 
@@ -48,7 +48,7 @@ class Config extends Login_middleware
 
         $id = $this->input->post('id');
         $x = null;
-        $config = $this->model_app->readJson(FILE_DATA);
+        $config = $this->Model_app->readJson(FILE_DATA);
         
         foreach ($config as $key=>$value) {
             if ($value['id'] == $id){
@@ -74,7 +74,7 @@ class Config extends Login_middleware
             $estado_pantalla = ($ip_pantalla != '' ? 1 : 0);
             $estado_citofono = ($ip_citofono != '' ? 1 : 0);
             
-            $config = $this->model_app->readJson(FILE_DATA);
+            $config = $this->Model_app->readJson(FILE_DATA);
             $id = 0;
             foreach ($config as $key) {
                 $id = ($key['id'] > $id ? $key['id'] : $id);
@@ -98,7 +98,7 @@ class Config extends Login_middleware
             
             array_push($config, $data);
             
-            if($this->model_app->writeJson(FILE_DATA,$config)){
+            if($this->Model_app->writeJson(FILE_DATA,$config)){
                 echo json_encode($config);
             }else{
                 echo "NOK";
@@ -139,7 +139,7 @@ class Config extends Login_middleware
                 )
             );
             
-            $config = $this->model_app->readJson(FILE_DATA);
+            $config = $this->Model_app->readJson(FILE_DATA);
             foreach ($config as $key => $value) {
                 if ($value['id'] == $id) {
                     $config[$key] = $upd;
@@ -147,7 +147,7 @@ class Config extends Login_middleware
                 }
             }
 
-            if($this->model_app->writeJson(FILE_DATA,$config)){
+            if($this->Model_app->writeJson(FILE_DATA,$config)){
                 echo json_encode($config);
             }else{
                 echo "NOK";
@@ -158,7 +158,7 @@ class Config extends Login_middleware
     public function eliminar() {
         
         $id = $this->input->post('id');
-        $config = $this->model_app->readJson(FILE_DATA);
+        $config = $this->Model_app->readJson(FILE_DATA);
 
         foreach ($config as $key=>$value) {
             if ($value['id'] == $id){
@@ -167,7 +167,7 @@ class Config extends Login_middleware
             }
         }
         
-        if($this->model_app->writeJson(FILE_DATA,$config)){
+        if($this->Model_app->writeJson(FILE_DATA,$config)){
             echo json_encode($config);
         }else{
             echo "NOK";
@@ -175,7 +175,7 @@ class Config extends Login_middleware
     }
 
     public function user(){
-        $config = $this->model_app->readJson(FILE_USER);
+        $config = $this->Model_app->readJson(FILE_USER);
         $data = [];
         $data['config'] = $config;
 
@@ -201,7 +201,7 @@ class Config extends Login_middleware
                 'hash' => $this->input->post('hash')
             );
 
-            if($this->model_app->writeJson(FILE_USER,$config)){
+            if($this->Model_app->writeJson(FILE_USER,$config)){
                 echo json_encode($config);
             }else{
                 echo false;
