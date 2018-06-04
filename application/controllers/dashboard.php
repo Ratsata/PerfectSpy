@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 //session_start();
-require_once APPPATH . 'core/login_middleware.php';
+require_once APPPATH . 'core/Login_middleware.php';
 
 class Dashboard extends Login_middleware
 {
@@ -31,7 +31,7 @@ class Dashboard extends Login_middleware
     }*/
     public function __construct() {
         parent::__construct();
-        $this->load->model('model_app');
+        $this->load->model('Model_app');
     }
 
     public function index($id="x")
@@ -54,7 +54,7 @@ class Dashboard extends Login_middleware
         );
 
         $data['led'] = $led_data;
-        $json = $this->model_app->readJson(FILE_DATA);
+        $json = $this->Model_app->readJson(FILE_DATA);
         $data['activoIndex'] = 1;
 
         $data['json'] = $json;

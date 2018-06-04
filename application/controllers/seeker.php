@@ -6,12 +6,12 @@ class Seeker extends CI_Controller
     public function __construct() {
         parent::__construct();
         $this->load->library('encryption');
-        $this->load->model('model_app');
+        $this->load->model('Model_app');
     }
     
     public function index()
     {
-        $config = $this->model_app->readJson(FILE_DATA);
+        $config = $this->Model_app->readJson(FILE_DATA);
         $data = [];
         
         foreach ($config as $key=>$value) {
