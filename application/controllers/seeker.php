@@ -67,8 +67,10 @@ class Seeker extends CI_Controller
     }
 
     public function pingAddress($ip){
-        $pingresult = shell_exec("start /b ping $ip -n 1");
-        $data   = 'inaccesible.';
+        //$pingresult = shell_exec("start /b ping $ip -n 1");
+        $pingresult = shell_exec("ping $ip -c 1");
+        //$data   = 'inaccesible.';
+        $data = 'Unreachable';
         $inaccesible = strpos($pingresult, $data);
         if ($inaccesible != false){
             return false;

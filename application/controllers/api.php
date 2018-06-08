@@ -9,18 +9,15 @@ class Api extends CI_Controller
         $data['status'] = false;
         $new_img = $this->input->post('image');
         if ($new_img) {
-            $img_path = FCPATH . TX_LED_DATA_PATH . '\current\current.jpg';
-            $imgbmp_path = FCPATH . TX_LED_DATA_PATH . '\current\current.bmp';
+            $img_path = FCPATH . TX_LED_DATA_PATH . '/current/current.jpg';
+            $imgbmp_path = FCPATH . TX_LED_DATA_PATH . '/current/current.bmp';
             $saved = $this->base64_to_jpeg($new_img, $img_path);
-            
 
             if ($saved) {
                 $bmp = imagecreatefromjpeg($img_path);
                 $this->imagebmp($bmp, $imgbmp_path);
-                
                 $uploaded = $this->transfer_image_to_screen($imgbmp_path);
-                
-                //$this->pixel($img_path);
+
                 if ($uploaded) {
                     $data['status'] = true;
                 }
@@ -80,14 +77,11 @@ class Api extends CI_Controller
 
     private function transfer_image_to_screen($img_path)
     {
-        
         $this->load->library('ftp');
         $config['hostname'] = TX_SCREEN_FTP_IP;
         $config['username'] = TX_SCREEN_FTP_USERNAME;
         $config['password'] = TX_SCREEN_FTP_PASSWORD;
-        /* $config['hostname'] = '192.168';
-        $config['username'] = 'root';
-        $config['password'] = '1234'; */
+        
         $this->ftp->connect($config);
             $result = $this->ftp->upload($img_path, TX_UBICACION_PROYECTO, 'auto', 0664);
         $this->ftp->close();
@@ -99,23 +93,14 @@ class Api extends CI_Controller
     {
 
         if (is_writeable($output_file)) {
-            // open the output file for writing
             $ifp = fopen($output_file, 'wb');
 
-            // split the string on commas
-            // $data[ 0 ] == "data:image/png;base64"
-            // $data[ 1 ] == <actual base64 string>
             $data = explode(',', $base64_string);
-            //echo $data[1];
-
-            // we could add validation here with ensuring count( $data ) > 1
             fwrite($ifp, base64_decode($data[1]));
-
-            // clean up the file resource
             fclose($ifp);
+
             return true;
         }
-
         return false;
     }
 }

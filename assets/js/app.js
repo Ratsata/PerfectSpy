@@ -120,7 +120,7 @@ function uploadLedImage(ledImage, format) {
             // Update the current led image
             var d = new Date();
             var n = d.getTime();
-            $('.tx-current-led-screen').attr('src', '/tectronix/perfectspy/assets/img/led/current/current.jpg' + '?timestamp=' + n);
+            $('.tx-current-led-screen').attr('src', '/perfectspy/assets/img/led/current/current.jpg' + '?timestamp=' + n);
 
             UIkit.notification({
                 message: 'Pantalla Led actualizada',
@@ -201,7 +201,8 @@ function updateScreenMockup() {
 }
 
 function focusCamera(ipCamara) {
-    window.location.href = "http://"+ipCamara;
+    //window.location.href = "http://"+ipCamara;
+    shell_exec("iexplore.exe "+ipCamara);
     /* if (cameraCode === 't1c1') {
         if ($('#camera-modal iframe').attr('src') == '') {
             $('#camera-modal iframe').attr('src', 'http://<?= TX_CAMERA_SERVER_IP ?>/cameracontrol.htm?cam-type=ptz&cam=' + cameraCode);

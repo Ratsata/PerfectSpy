@@ -98,12 +98,9 @@ define('TX_CAMERA_SERVER_PASSWORD', 'un01cent');
 define('TX_LED_DATA_PATH', 'assets/img/led');
 
 
-define('TX_SCREEN_FTP_IP', '192.168.1.240');//ftp
+define('TX_SCREEN_FTP_IP', '192.168.1.23');//ftp
 define('TX_SCREEN_FTP_USERNAME', 'pi');
 define('TX_SCREEN_FTP_PASSWORD', 'raspberry');
-/*define('TX_SCREEN_FTP_IP', '10.0.0.106');
-define('TX_SCREEN_FTP_USERNAME', 'pi');
-define('TX_SCREEN_FTP_PASSWORD', 'un01centtectronix');*/
 define('TX_SCREEN_FTP_BASE', '/');
 //define('TX_SCREEN_FTP_BASE', 'Perfect-Spy/app/');
 define('TX_UBICACION_PROYECTO', '/192.168.1.240/192.168.1.240/1/3_1.bmp');
