@@ -70,76 +70,35 @@ function previousDashboard(){
 }
 
 function updateLedScreen() {
-    createImageFromDiv('#led-new-visualization','current1');
-    //createImageFromDiv('#led-new-visualization2','current2');
-    //$.when(createImageFromDiv('#led-new-visualization','current1')).then(createImageFromDiv('#led-new-visualization2','current2'));
-    /* createImageFromDiv('#led-new-visualization','current1', function() {
-        createImageFromDiv('#led-new-visualization2','current2');
-    }); */
+    createImageFromDiv('#led-new-visualization');
 }
 
-function createImageFromDiv(container,nombre,callback=null) {
+function createImageFromDiv(container) {
     html2canvas($(container)[0], {logging:false}).then(function(canvas){
         theCanvas = canvas;
         document.body.appendChild(canvas);
         // Convert to image
         $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
-        var imagen1 = $("#led-img-output img").attr('src'); 
+        ledSettings.new = $("#led-img-output img").attr('src'); 
         document.body.removeChild(canvas);
+
+        uploadLedImage(ledSettings.new, 'base64');
     });
-    html2canvas($(container)[0], {logging:false}).then(function(canvas){
-        theCanvas = canvas;
-        document.body.appendChild(canvas);
-        // Convert to image
-        $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
-        var imagen2 = $("#led-img-output img").attr('src'); 
-        document.body.removeChild(canvas);
-    });
-    uploadLedImage(imagen1,imagen2,'base64');
 }
 
-function uploadLedImage(ledImage,ledImage2,format,nombre) {
+function uploadLedImage(ledImage, format) {
     if (ledSettings.working) {
         return;
     }
     ledSettings.working = true;
     $.ajax({
         url: urlApi,
-        data: {image: ledImage, name: "current1"},
+        data: {image: ledImage, name: TX_LED_NAME1},
         dataType: 'json',
         method: 'post'
     }).done(function (result) {
-        console.log(result);
         if (result.status) {
-            $.ajax({
-                url: urlApi,
-                data: {image: ledImage2, name: "current2"},
-                dataType: 'json',
-                method: 'post'
-            }).done(function (result) {
-                if (result.status) {
-                    // Update the current led image
-                    var d = new Date();
-                    var n = d.getTime();
-                    $('.tx-current-led-screen').attr('src', base_url+'assets/img/led/current/current1.jpg' + '?timestamp=' + n);
-
-                    UIkit.notification({
-                        message: 'Pantalla Led actualizada',
-                        status: 'success',
-                        pos: 'top-center'
-                    });
-
-                    setTimeout(function () {
-                        UIkit.modal('#screen-modal').hide();
-                    }, 1500)
-                }else {
-                    UIkit.notification({
-                        message: 'Error al actualizar pantalla',
-                        status: 'danger',
-                        pos: 'top-center'
-                    });
-                }
-            });
+            createImageFromDiv2('#led-new-visualization2');
         }else{
             UIkit.notification({
                 message: 'Error al actualizar pantalla',
@@ -147,6 +106,7 @@ function uploadLedImage(ledImage,ledImage2,format,nombre) {
                 pos: 'top-center'
             });
         }
+
     }).fail(function () {
 
         UIkit.notification({
@@ -159,6 +119,46 @@ function uploadLedImage(ledImage,ledImage2,format,nombre) {
         ledSettings.working = false;
     })
 
+}
+
+function createImageFromDiv2(container){
+    html2canvas($(container)[0], {logging:false}).then(function(canvas){
+        theCanvas = canvas;
+        document.body.appendChild(canvas);
+        // Convert to image
+        $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
+        ledSettings.new = $("#led-img-output img").attr('src'); 
+        document.body.removeChild(canvas);
+
+        $.ajax({
+            url: urlApi,
+            data: {image: ledSettings.new, name: TX_LED_NAME2},
+            dataType: 'json',
+            method: 'post'
+        }).done(function (result) {
+            if (result.status) {
+                var d = new Date();
+                var n = d.getTime();
+                $('.tx-current-led-screen').attr('src', base_url+'assets/img/led/current/current1.jpg' + '?timestamp=' + n);
+
+                UIkit.notification({
+                    message: 'Pantalla Led actualizada',
+                    status: 'success',
+                    pos: 'top-center'
+                });
+
+                setTimeout(function () {
+                    UIkit.modal('#screen-modal').hide();
+                }, 1500)
+            }else{
+                UIkit.notification({
+                    message: 'Error al actualizar pantalla',
+                    status: 'danger',
+                    pos: 'top-center'
+                });
+            }
+        });
+    });
 }
 
 function updateScreenMockup() {

@@ -90,6 +90,8 @@ define('TX_CAMERA_SERVER_USERNAME', 'web');
 define('TX_CAMERA_SERVER_PASSWORD', 'un01cent');
 
 define('TX_LED_DATA_PATH', 'assets/img/led');
+define('TX_LED_NAME1', 'current1');
+define('TX_LED_NAME2', 'current2');
 
 
 define('TX_SCREEN_FTP_IP', '192.168.1.23');//ftp

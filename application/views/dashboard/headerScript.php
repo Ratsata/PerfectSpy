@@ -22,7 +22,8 @@
     var urlApi = '<?= base_url('index.php/api/screen_update') ?>';
     var TX_URL_CITOFONO = '<?= TX_URL_CITOFONO ?>';
     var base_url = '<?= base_url() ?>';
-
+    var TX_LED_NAME1 = '<?= TX_LED_NAME1 ?>';
+    var TX_LED_NAME2 = '<?= TX_LED_NAME2 ?>';
     var idSeteado = '<?= $id ?>';
 
 </script>

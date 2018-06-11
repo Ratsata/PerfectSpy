@@ -9,9 +9,7 @@ class Api extends CI_Controller
         $data['status'] = false;
         $new_img = $this->input->post('image');
         $name = $this->input->post('name');
-        echo "1";
         if ($new_img) {
-            echo "2";
             $img_path = FCPATH . TX_LED_DATA_PATH . '/current/'.$name.'.jpg';
             $imgbmp_path = FCPATH . TX_LED_DATA_PATH . '/current/'.$name.'.bmp';
             $saved = $this->base64_to_jpeg($new_img, $img_path);
