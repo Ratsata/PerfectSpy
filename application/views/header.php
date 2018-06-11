@@ -23,6 +23,3 @@
     <?= link_tag('assets/css/app.css') ?>
     <?= link_tag('assets/css/vxgplayer-1.8.31.min.css') ?>
     <?= link_tag('assets/css/bootstrap.min.css') ?>
-
-
-<?= link_tag('assets/css/q/custom.css') ?>

@@ -41,15 +41,17 @@
 
         <div class="uk-grid-collapse" uk-grid style="background-color: #444;">
             <div class="uk-width-1-2 uk-text-center uk-padding-small">
-                <div class="uk-light uk-text-left">VISUALIZACION ACTUAL</div>
-                <img src="<?= base_url($led['current']) ?>" class="tx-current-led-screen"/>
+                <div class="uk-light uk-text-left">VISUALIZACION TEXTO</div>
+                <div id="led-new-visualization" class="led-new-visualization"
+                     style="height: <?= $led['height'] ?>px; width: <?= $led['width'] ?>px; color: #ffbf00; background-color: #000;">
+                    <div id="led-new-visualization-text"><center><span></span></center></div>
+                </div>
             </div>
             <div class="uk-width-1-2 uk-text-center uk-padding-small" style="background-color: #555;">
-                <div class="uk-light uk-text-left">NUEVA VISUALIZACION</div>
-                <div id="led-new-visualization"
+                <div class="uk-light uk-text-left">VISUALIZACION IMAGEN</div>
+                <div id="led-new-visualization2" class="led-new-visualization"
                      style="height: <?= $led['height'] ?>px; width: <?= $led['width'] ?>px; background-color: #000;">
                     <div id="led-new-visualization-icon"></div>
-                    <div id="led-new-visualization-text"><span></span></div>
                 </div>
             </div>
         </div>
@@ -63,31 +65,16 @@
                     <label for="led-font-weight"><input id="led-font-weight" class="uk-checkbox" type="checkbox"
                                                         checked="checked"/>
                         Negrita</label>
+                    &nbsp;
                     <label for="led-font-size"><input id="led-font-size" class="uk-input uk-form-small" type="number"
-                                                      value="16" style="max-width: 64px;" min="11" max="99"/>
+                                                      value="60" style="max-width: 64px;" min="50" max="300"/>
                         Tamaño</label>
-                    <br>
-                    <div style="margin-bottom: 3px;">
-                        <span id="led-font-color" class="uk-padding-small uk-display-inline-block"
-                              style="padding: 4px; vertical-align: middle; border: 1px solid #ccc;">
-                            <div style="background-color: #ffffff; width:24px; height: 24px;"></div>
-                        </span> Color de fuente
-                    </div>
-                    <div style="margin-bottom: 3px;">
-                        <span id="led-background-color" class="uk-padding-small uk-display-inline-block"
-                              style="padding: 4px; vertical-align: middle; border: 1px solid #ccc;">
-                            <div style="background-color: #000000; width: 24px; height: 24px;"></div>
-                        </span> Color de fondo
-                        <!-- <div class="picker-wrapper uk-padding-small uk-width-1-2">
-                            <button type="button" class="btn btn-default">Color fondo</button>
-                            <div class="color-picker">
-                            </div>
-                        </div> -->
-                    </div>
-
+                    &nbsp;
+                    <label for="led-font-spacing"><input id="led-font-spacing" class="uk-input uk-form-small" type="number"
+                                                      value="50" style="max-width: 64px;" min="16" max="300"/>
+                        Interlineado</label>
                 </div>
                 <div class="uk-width-1-2">
-
                     <label for="led-icon-selector">&Iacute;cono</label>
                     <div id="led-icon-selector">
                         <?php foreach ($led['icons'] as $icon): ?>

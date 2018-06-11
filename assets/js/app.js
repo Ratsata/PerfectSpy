@@ -39,23 +39,8 @@ $(document).ready(function () {
         updateScreenMockup();
     });
 
-    //updateScreenMockup();
+    updateScreenMockup();
 
-    $('#led-font-color').ColorPicker({
-        color: '#ffffff',
-        onShow: function (colpkr) {
-            $(colpkr).fadeIn(500);
-            return false;
-        },
-        onHide: function (colpkr) {
-            $(colpkr).fadeOut(500);
-            return false;
-        },
-        onChange: function (hsb, hex, rgb) {
-            $('#led-font-color div').css('backgroundColor', '#' + hex);
-            $('#led-new-visualization').css('color', '#' + hex);
-        }
-    });
     $('#led-background-color').ColorPicker({
         color: '#000000',
         onShow: function (colpkr) {
@@ -68,7 +53,7 @@ $(document).ready(function () {
         },
         onChange: function (hsb, hex, rgb) {
             $('#led-background-color div').css('backgroundColor', '#' + hex);
-            $('#led-new-visualization').css('backgroundColor', '#' + hex);
+            $('.led-new-visualization').css('backgroundColor', '#' + hex);
         }
     });
 });
@@ -86,6 +71,7 @@ function previousDashboard(){
 
 function updateLedScreen() {
     createImageFromDiv('#led-new-visualization');
+    //createImageFromDiv
 }
 
 function createImageFromDiv(container) {
@@ -171,16 +157,22 @@ function updateScreenMockup() {
     // Check if text is available
     var bold = $('#led-font-weight').is(':checked');
     var fontSize = $('#led-font-size').val().trim();
-    var ledText = $('#led-new-text').val().replace(/\n/g, "<br>").trim();
+    var fontSpacing = $('#led-font-spacing').val().trim();
+    //var ledText = $('#led-new-text').val().replace(/\n/g, "<br>").trim();
+    var ledText = $('#led-new-text').val().replace(/\n/g, "<br>").replace(/  /g, "&nbsp;");
+    console.log(ledText);
     $('#led-new-visualization-text span').html(ledText)
     $('#led-new-visualization-text').css('font-weight', bold ? 'bold' : 'normal')
         .css('height', ledSettings.height + 'px')
-        .css('line-height', ledSettings.height + 'px');
-    $('#led-new-visualization-text span').css('font-size', fontSize ? fontSize + 'px' : '16px');
-    $('#led-new-visualization-text span').css('line-height', fontSize ? fontSize + 'px' : '16px');
+        .css('line-height',fontSpacing + 'px');
+    $('#led-new-visualization-text span').css('font-size', fontSize ? fontSize + 'px' : '60px');
+    $('#led-new-visualization-text span').css('line-height', fontSpacing ? fontSpacing + 'px' : '60px');
 
-
-    if (ledText.length > 0 && !iconSelected) {
+    $('#led-new-visualization-text').css('margin-top', "1px");
+    $('#led-new-visualization-text').css('width', '100%');
+    $('#led-new-visualization-icon').css('width', '100%');
+    $('#led-new-visualization-icon').css('margin-top', "1px");
+   /*  if (ledText.length > 0 && !iconSelected) {
         $('#led-new-visualization-icon').css('width', 0);
         $('#led-new-visualization-text').css('margin-top', "1px");
         $('#led-new-visualization-text').css('width', '100%');
@@ -196,7 +188,7 @@ function updateScreenMockup() {
         $('#led-new-visualization-icon').css('width', '100%');
         $('#led-new-visualization-icon').css('margin-top', "1px");
         $('#led-new-visualization-text').css('width', 0);
-    }
+    } */
 
 }
 
