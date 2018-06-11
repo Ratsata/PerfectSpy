@@ -70,63 +70,83 @@ function previousDashboard(){
 }
 
 function updateLedScreen() {
-    createImageFromDiv('#led-new-visualization');
-    //createImageFromDiv
+    createImageFromDiv('#led-new-visualization','current1');
+    //createImageFromDiv('#led-new-visualization2','current2');
+    //$.when(createImageFromDiv('#led-new-visualization','current1')).then(createImageFromDiv('#led-new-visualization2','current2'));
+    /* createImageFromDiv('#led-new-visualization','current1', function() {
+        createImageFromDiv('#led-new-visualization2','current2');
+    }); */
 }
 
-function createImageFromDiv(container) {
+function createImageFromDiv(container,nombre,callback=null) {
     html2canvas($(container)[0], {logging:false}).then(function(canvas){
         theCanvas = canvas;
         document.body.appendChild(canvas);
         // Convert to image
         $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
-        ledSettings.new = $("#led-img-output img").attr('src'); 
+        var imagen1 = $("#led-img-output img").attr('src'); 
         document.body.removeChild(canvas);
-
-        uploadLedImage(ledSettings.new, 'base64');
     });
+    html2canvas($(container)[0], {logging:false}).then(function(canvas){
+        theCanvas = canvas;
+        document.body.appendChild(canvas);
+        // Convert to image
+        $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
+        var imagen2 = $("#led-img-output img").attr('src'); 
+        document.body.removeChild(canvas);
+    });
+    uploadLedImage(imagen1,imagen2,'base64');
 }
 
-function uploadLedImage(ledImage, format) {
-
+function uploadLedImage(ledImage,ledImage2,format,nombre) {
     if (ledSettings.working) {
         return;
     }
     ledSettings.working = true;
     $.ajax({
         url: urlApi,
-        data: {image: ledImage},
+        data: {image: ledImage, name: "current1"},
         dataType: 'json',
         method: 'post'
     }).done(function (result) {
-
-
+        console.log(result);
         if (result.status) {
+            $.ajax({
+                url: urlApi,
+                data: {image: ledImage2, name: "current2"},
+                dataType: 'json',
+                method: 'post'
+            }).done(function (result) {
+                if (result.status) {
+                    // Update the current led image
+                    var d = new Date();
+                    var n = d.getTime();
+                    $('.tx-current-led-screen').attr('src', base_url+'assets/img/led/current/current1.jpg' + '?timestamp=' + n);
 
-            // Update the current led image
-            var d = new Date();
-            var n = d.getTime();
-            $('.tx-current-led-screen').attr('src', '/perfectspy/assets/img/led/current/current.jpg' + '?timestamp=' + n);
+                    UIkit.notification({
+                        message: 'Pantalla Led actualizada',
+                        status: 'success',
+                        pos: 'top-center'
+                    });
 
-            UIkit.notification({
-                message: 'Pantalla Led actualizada',
-                status: 'success',
-                pos: 'top-center'
+                    setTimeout(function () {
+                        UIkit.modal('#screen-modal').hide();
+                    }, 1500)
+                }else {
+                    UIkit.notification({
+                        message: 'Error al actualizar pantalla',
+                        status: 'danger',
+                        pos: 'top-center'
+                    });
+                }
             });
-
-            setTimeout(function () {
-                UIkit.modal('#screen-modal').hide();
-            }, 1500)
-        }
-        else {
-
+        }else{
             UIkit.notification({
                 message: 'Error al actualizar pantalla',
                 status: 'danger',
                 pos: 'top-center'
             });
         }
-
     }).fail(function () {
 
         UIkit.notification({
@@ -160,7 +180,6 @@ function updateScreenMockup() {
     var fontSpacing = $('#led-font-spacing').val().trim();
     //var ledText = $('#led-new-text').val().replace(/\n/g, "<br>").trim();
     var ledText = $('#led-new-text').val().replace(/\n/g, "<br>").replace(/  /g, "&nbsp;");
-    console.log(ledText);
     $('#led-new-visualization-text span').html(ledText)
     $('#led-new-visualization-text').css('font-weight', bold ? 'bold' : 'normal')
         .css('height', ledSettings.height + 'px')
@@ -172,29 +191,12 @@ function updateScreenMockup() {
     $('#led-new-visualization-text').css('width', '100%');
     $('#led-new-visualization-icon').css('width', '100%');
     $('#led-new-visualization-icon').css('margin-top', "1px");
-   /*  if (ledText.length > 0 && !iconSelected) {
-        $('#led-new-visualization-icon').css('width', 0);
-        $('#led-new-visualization-text').css('margin-top', "1px");
-        $('#led-new-visualization-text').css('width', '100%');
-    }
-    else if (ledText.length > 0 && iconSelected) {
-        $('#led-new-visualization-icon').css('width', "40%");
-        $('#led-new-visualization-icon').css('margin-top', "25px");
-        $('#led-new-visualization-icon').css('padding', "0px");
-        $('#led-new-visualization-text').css('margin-top', "25px");
-        $('#led-new-visualization-text').css('width', "50%");
-    }
-    else if (iconSelected && ledText.length === 0) {
-        $('#led-new-visualization-icon').css('width', '100%');
-        $('#led-new-visualization-icon').css('margin-top', "1px");
-        $('#led-new-visualization-text').css('width', 0);
-    } */
 
 }
 
 function focusCamera(ipCamara) {
-    //window.location.href = "http://"+ipCamara;
-    shell_exec("iexplore.exe "+ipCamara);
+    window.location.href = "http://"+ipCamara;
+    //shell_exec("iexplore.exe "+ipCamara);
     /* if (cameraCode === 't1c1') {
         if ($('#camera-modal iframe').attr('src') == '') {
             $('#camera-modal iframe').attr('src', 'http://<?= TX_CAMERA_SERVER_IP ?>/cameracontrol.htm?cam-type=ptz&cam=' + cameraCode);

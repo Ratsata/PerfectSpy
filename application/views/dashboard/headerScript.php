@@ -19,14 +19,6 @@
     var PTZ_PASS = '<?=PTZ_PASS?>';
     var PTZ_URL = '<?=PTZ_URL?>';
 
-
-    var sensorsData = {
-        external_temperature: {container: '#tx-external_temperature', value: 16, unit: '°C'},
-        internal_temperature: {container: '#tx-internal_temperature', value: 16, unit: '°C'},
-        humidity: {container: '#tx-humidity', value: 75, unit: '%'},
-        battery: {container: '#tx-battery', value: 100, unit: 'kn'}
-    };
-
     var urlApi = '<?= base_url('index.php/api/screen_update') ?>';
     var TX_URL_CITOFONO = '<?= TX_URL_CITOFONO ?>';
     var base_url = '<?= base_url() ?>';

@@ -85,12 +85,6 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-
-//define('TX_SENSORS_SERVER_IP', '10.0.0.106');// Raspberry
-define('TX_SENSORS_SERVER_IP', '192.168.2.150');// localhost
-define('TX_SENSORS_WEB_PORT', '8000');// webserver
-define('TX_SENSORS_FTP_PORT', '21');// ftp
-
 define('TX_CAMERA_SERVER_IP', '10.0.0.101:81');
 define('TX_CAMERA_SERVER_USERNAME', 'web');
 define('TX_CAMERA_SERVER_PASSWORD', 'un01cent');
