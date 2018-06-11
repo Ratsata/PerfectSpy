@@ -90,7 +90,7 @@
 
         </form>
         <div id="led-img-output" style="height=268;width:428" class="uk-hidden"></div>
-
+        <progress id="progressbar" class="uk-progress" value="0" max="100"></progress>
         <p class="uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close">Cancelar</button>
             <button class="uk-button uk-button-primary"

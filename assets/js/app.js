@@ -70,10 +70,12 @@ function previousDashboard(){
 }
 
 function updateLedScreen() {
+    $("#progressbar").val(10);
     createImageFromDiv('#led-new-visualization');
 }
 
 function createImageFromDiv(container) {
+    $("#progressbar").val(20);
     html2canvas($(container)[0], {logging:false}).then(function(canvas){
         theCanvas = canvas;
         document.body.appendChild(canvas);
@@ -81,12 +83,12 @@ function createImageFromDiv(container) {
         $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
         ledSettings.new = $("#led-img-output img").attr('src'); 
         document.body.removeChild(canvas);
-
         uploadLedImage(ledSettings.new, 'base64');
     });
 }
 
 function uploadLedImage(ledImage, format) {
+    $("#progressbar").val(30);
     if (ledSettings.working) {
         return;
     }
@@ -97,6 +99,7 @@ function uploadLedImage(ledImage, format) {
         dataType: 'json',
         method: 'post'
     }).done(function (result) {
+        $("#progressbar").val(50);
         if (result.status) {
             createImageFromDiv2('#led-new-visualization2');
         }else{
@@ -106,9 +109,7 @@ function uploadLedImage(ledImage, format) {
                 pos: 'top-center'
             });
         }
-
     }).fail(function () {
-
         UIkit.notification({
             message: 'Error de comunicación al actualizar pantalla',
             status: 'danger',
@@ -122,6 +123,7 @@ function uploadLedImage(ledImage, format) {
 }
 
 function createImageFromDiv2(container){
+    $("#progressbar").val(70);
     html2canvas($(container)[0], {logging:false}).then(function(canvas){
         theCanvas = canvas;
         document.body.appendChild(canvas);
@@ -129,7 +131,7 @@ function createImageFromDiv2(container){
         $("#led-img-output").html(Canvas2Image.convertToJPEG(canvas));
         ledSettings.new = $("#led-img-output img").attr('src'); 
         document.body.removeChild(canvas);
-
+        $("#progressbar").val(85);
         $.ajax({
             url: urlApi,
             data: {image: ledSettings.new, name: TX_LED_NAME2},
@@ -137,6 +139,7 @@ function createImageFromDiv2(container){
             method: 'post'
         }).done(function (result) {
             if (result.status) {
+                $("#progressbar").val(100);
                 var d = new Date();
                 var n = d.getTime();
                 $('.tx-current-led-screen').attr('src', base_url+'assets/img/led/current/current1.jpg' + '?timestamp=' + n);
@@ -150,6 +153,7 @@ function createImageFromDiv2(container){
                 setTimeout(function () {
                     UIkit.modal('#screen-modal').hide();
                 }, 1500)
+                $("#progressbar").val(0);
             }else{
                 UIkit.notification({
                     message: 'Error al actualizar pantalla',
