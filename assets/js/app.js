@@ -200,19 +200,6 @@ function updateScreenMockup() {
 
 function focusCamera(ipCamara) {
     window.location.href = "http://"+ipCamara;
-    //shell_exec("iexplore.exe "+ipCamara);
-    /* if (cameraCode === 't1c1') {
-        if ($('#camera-modal iframe').attr('src') == '') {
-            $('#camera-modal iframe').attr('src', 'http://<?= TX_CAMERA_SERVER_IP ?>/cameracontrol.htm?cam-type=ptz&cam=' + cameraCode);
-        }
-        UIkit.modal('#camera-modal').show();
-    }
-    else if (cameraCode === 't1c2') {
-        if ($('#camera-modal2 iframe').attr('src') == '') {
-            $('#camera-modal2 iframe').attr('src', 'http://<?= TX_CAMERA_SERVER_IP ?>/cameracontrol.htm?cam-type=ptz&cam=' + cameraCode);
-        }
-        UIkit.modal('#camera-modal2').show();
-    } */
 }
 
 function focusDoorbellCall(nombre="CIT&Oacute;FONO") {
@@ -355,10 +342,6 @@ function llenarModulos(json){
                                 "onclick='focusCamera(\""+item.ipCamara+"\")'><i uk-icon='icon: expand'></i></button>"+
                                 "</div>");
                 inicializarCamara(item.ipCamara);
-                /* width = $("#moduloCamara").width();
-                vxgplayer("vxg_media_player1").size(width,300);
-                vxgplayer("vxg_media_player1").src('rtsp://admin:cleanvoltage2018@192.168.1.108/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif');
-                vxgplayer("vxg_media_player1").play(); */
             }else if(item.onlineCamara=="nok"){
                 $("#moduloCamara").append("<center>"+
                     "<span style='margin-top:100px' uk-icon='icon: warning; ratio: 10'></span>"+
@@ -407,7 +390,7 @@ function date_time(id)
 function inicializarCamara(ip){
     vxgplayer("vxg_media_player1",{
         nmf_path: 'media_player.nmf',
-        nmf_src: '/pnacl/Release/media_player.nmf',
+        nmf_src: base_url+'assets/pnacl/Release/media_player.nmf',
         latency: 300000,
         aspect_ratio_mode: 2,
         autohide: 3,
