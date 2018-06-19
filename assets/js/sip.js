@@ -25,10 +25,11 @@ function answerCall(numero="",nombre="") {
         }).then(function () {
             $('.tx-webphone').hide();
             $('#tx-webphone-connecting').show();
-            webphone_api.reject();
+            /* webphone_api.reject();
             setTimeout(function () {
                 webphone_api.call(webphone_api.parameters.callto);
-            }, 1000)
+            }, 1000) */
+            webphone_api.accept();
             $('#tx-webphone-connecting').hide();
             $('#tx-webphone-hangup').show();
             focusDoorbellCall(nombre);

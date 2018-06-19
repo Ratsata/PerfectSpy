@@ -75,6 +75,13 @@
                                 src="rtsp://admin:cleanvoltage2018@192.168.1.108:554/cam/realmonitor?channel=1&subtype=1"
                             />        
                         </object>
+                        <object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+                            codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab" id="vlc">
+                            <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" name="vlc"
+                            width="200px"
+                                height="200px"
+                            src="rtsp://admin:cleanvoltage2018@192.168.1.108:554/cam/realmonitor?channel=1&subtype=1"/>
+                        </object>
                         <div id="moduloCamara" class="uk-align-center">    
                         </div>
                     </div>
