@@ -43,7 +43,7 @@
             <div class="uk-width-1-2 uk-text-center uk-padding-small">
                 <div class="uk-light uk-text-left">VISUALIZACION TEXTO</div>
                 <div id="led-new-visualization" class="led-new-visualization"
-                     style="height: <?= $led['height'] ?>px; width: <?= $led['width'] ?>px; color: #ffbf00; background-color: #000;">
+                     style="height: <?= $led['height'] ?>px; width: <?= $led['width'] ?>px; color: #FF8C00; background-color: #000;">
                     <div id="led-new-visualization-text"><center><span></span></center></div>
                 </div>
             </div>

@@ -65,23 +65,23 @@
                 <div  id="divCamara" class="uk-width-1-1@s uk-width-1-2@m uk-width-1-3@l uk-padding-small">
                     <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-medium">
                         <h3 class="uk-margin-remove-bottom"><i class="flaticon-cctv"></i> PTZ 1</h3>
-                        <object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" 
-                            codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab"
-                            style= "width: 200px; height: 200px;">
-                            <param name="src" value="rtsp://admin:cleanvoltage2018@192.168.1.108:554/cam/realmonitor?channel=1&subtype=1" />
-                            <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org"
-                                width="200px"
-                                height="200px"
-                                src="rtsp://admin:cleanvoltage2018@192.168.1.108:554/cam/realmonitor?channel=1&subtype=1"
-                            />        
-                        </object>
-                        <object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
-                            codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab" id="vlc">
-                            <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" name="vlc"
-                            width="200px"
-                                height="200px"
-                            src="rtsp://admin:cleanvoltage2018@192.168.1.108:554/cam/realmonitor?channel=1&subtype=1"/>
-                        </object>
+                        <video
+                            id="my-player2"
+                            class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered"
+                            controls
+                            preload="auto"
+                            autoplay
+                            data-setup='{
+                                "fluid":true
+                            }'>
+                            <source src="rtmp://192.168.137.138/myapp/192.168.1.108" type="rtmp/mp4"></source>
+                            <p class="vjs-no-js">
+                                Para visualizar este video habilite Javascript o intente cambiar su navegador.
+                                <a href="http://videojs.com/html5-video-support/" target="_blank">
+                                Soportado por HTML5 Video
+                                </a>
+                            </p>
+                        </video>
                         <div id="moduloCamara" class="uk-align-center">    
                         </div>
                     </div>

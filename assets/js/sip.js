@@ -17,7 +17,9 @@ webphone_api.onLoaded(function () {
     });
 });
 
-function answerCall(numero="",nombre="") {
+function answerCall() {
+    var nombre = "";
+    var numero ="";
     UIkit.modal.confirm('<span uk-icon=\'icon: bell\'></span> Llamada del dispositivo: '+nombre+' del numero '+numero+'',
         { labels: {
             cancel: 'Cancelar',
