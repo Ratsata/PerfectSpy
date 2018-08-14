@@ -14,7 +14,7 @@ var webphone_api = (function ()
 var parameters = {
                     serveraddress: '192.168.1.240', // your VoIP server IP address, domain name or SRV DNS record (also set the :port if that is not the default 5060)
                     username: '104', // preconfigured SIP account username
-                    password: '104', // preconfigured SIP account password                 
+                    password: 'cv.104', // preconfigured SIP account password                 
                     callto: '101',
 					//other parameters are optional. See the documentation for the complete parameter list of available settings.
                     loglevel: 1,
