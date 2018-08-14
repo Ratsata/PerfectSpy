@@ -337,7 +337,7 @@ function llenarModulos(json){
                 $("#divPantalla").fadeOut();
             }
             if (item.onlineCamara=="ok"){
-                $("#moduloCamara").append("<video id='my-player' class='video-js vjs-default-skin vjs-16-9 vjs-big-play-centered'"+
+                /* $("#moduloCamara").append("<video id='my-player' class='video-js vjs-default-skin vjs-16-9 vjs-big-play-centered'"+
                                 "<source src='rtmp://192.168.137.138/myapp/192.168.1.108' type='rtmp/mp4'></source>"+
                                 "<p class='vjs-no-js'>Para visualizar este video habilite Javascript o intente cambiar su navegador."+
                                 "<a href='http://videojs.com/html5-video-support/' target='_blank'>Soportado por HTML5 Video</a>"+
@@ -352,13 +352,13 @@ function llenarModulos(json){
                                     controls: true,
                                     autoplay: true,
                                     preload: 'auto'
-                                });
-                /* $("#moduloCamara").append("<div class='vxgplayer' id='vxg_media_player1'></div>"+
+                                }); */
+                $("#moduloCamara").append("<div class='vxgplayer' id='vxg_media_player1'></div>"+
                                 "<div class='uk-margin-small-top'>"+
                                 "<button class='uk-button' title='Enfocar cámara' uk-tooltip='delay: 1000;'"+
                                 "onclick='focusCamera(\""+item.ipCamara+"\")'><i uk-icon='icon: expand'></i></button>"+
                                 "</div>");
-                inicializarCamara(item.ipCamara); */
+                inicializarCamara(item.ipCamara);
             }else if(item.onlineCamara=="nok"){
                 $("#moduloCamara").append("<center>"+
                     "<span style='margin-top:100px' uk-icon='icon: warning; ratio: 10'></span>"+
