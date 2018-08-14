@@ -45,7 +45,7 @@
         
         <!-- Body Content -->
         <div class="uk-padding">
-
+                                            qweqwqweqwe
             <!-- DIV AGREGAR-TOTEM -->
             <div id="divTotem" class="uk-width-1-1 uk-padding-small" hidden>
                 <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-medium">
@@ -82,8 +82,8 @@
                                 </a>
                             </p>
                         </video>
-                        <div id="moduloCamara" class="uk-align-center">    
-                        </div>
+                        <!-- <div id="moduloCamara" class="uk-align-center">    
+                        </div> -->
                     </div>
                 </div>
 
