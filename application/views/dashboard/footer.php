@@ -18,7 +18,7 @@
 <script src="<?= base_url('assets/js/app.js') ?>"></script>
 <script src="<?=base_url('assets/js/piklor.min.js')?>"></script>
 <script src="<?=base_url('assets/js/handlers.js')?>"></script>
-<script src="<?=base_url('assets/js/vxgplayer-1.8.31.min.js')?>"></script>
+<script src="<?=base_url('assets/js/vxgplayer-1.8.31.js')?>"></script>
 <script src="<?=base_url('assets/js/video.js')?>"></script>
 <script src="<?=base_url('assets/js/videojs-flash.min.js')?>"></script>
         
