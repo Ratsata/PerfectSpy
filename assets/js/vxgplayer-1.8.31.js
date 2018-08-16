@@ -81,8 +81,10 @@ window.vxgplayer = function(id, options_){
 			/* init options */
 			window.vxgplayer.initOptions(self, opts);
 
-			self.playerWidth=self.options.width || 640;
-			self.playerHeight=self.options.height || 480;
+			//self.playerWidth=self.options.width || 640;
+			//self.playerHeight=self.options.height || 480;
+			self.playerWidth=self.options.width || 100;
+			self.playerHeight=self.options.height || 100;
 			self.playerWidth = parseInt(self.player.getAttribute('width'),10) || self.playerWidth;
 			self.playerHeight = parseInt(self.player.getAttribute('height'),10) || self.playerHeight;
 			self.player.style.width = self.playerWidth + 'px';
