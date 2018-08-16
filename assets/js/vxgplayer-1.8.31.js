@@ -754,6 +754,8 @@ window.vxgplayer = function(id, options_){
 			self.size = function(width, height){
 				if(width && height){
 					if(Number.isInteger(width) && Number.isInteger(height)){
+						width = 50;//min
+						height = 50;//min
 						var w = parseInt(width,10);
 						var h = parseInt(height,10);
 						//self.playerWidth = self.playerWidth != w ? w : self.playerWidth;
