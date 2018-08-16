@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-session_start();
 
 Class Auth extends CI_Controller {
 
@@ -11,6 +10,7 @@ Class Auth extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->model('Model_app');
+        session_start();
         
         if(!file_exists(FILE_DATA)){
             $data = [];
@@ -26,16 +26,17 @@ Class Auth extends CI_Controller {
         $cookie_login = get_cookie("cookie_login");
         if($cookie_login!=null || $this->session->has_userdata('logged_in')){
             redirect('index.php/dashboard');
+        }else{
+            $this->load->view('header');
+            $this->load->view('login');
         }
-        $this->load->view('header');
-        $this->load->view('login');
     }
     
     public function login() {
         
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
-        if ($this->form_validation->run() == false) {
+        if (!$this->form_validation->run()) {
             if($this->session->has_userdata('logged_in')){
                 redirect("index.php/dashboard");
             }else{
@@ -73,7 +74,7 @@ Class Auth extends CI_Controller {
         if(get_cookie('cookie_login')!=null){
             delete_cookie('cookie_login');
         }
-        $this->session->sess_destroy();
+        $this->session->unset_userdata('logged_in');
         redirect("index.php");
     }
 

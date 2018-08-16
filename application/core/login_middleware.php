@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-session_start();
 
 Class Login_middleware extends CI_Controller {
 
@@ -8,6 +7,8 @@ Class Login_middleware extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('cookie');
+        session_start();
+        
         $cookie_login = get_cookie("cookie_login");
         if($cookie_login!=null){
             delete_cookie('cookie_login');
