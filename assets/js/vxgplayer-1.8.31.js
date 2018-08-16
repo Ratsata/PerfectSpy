@@ -83,8 +83,8 @@ window.vxgplayer = function(id, options_){
 
 			//self.playerWidth=self.options.width || 640;
 			//self.playerHeight=self.options.height || 480;
-			self.playerWidth=$("#moduloCamara").width() ? $("#moduloCamara").width() : 100;
-			self.playerHeight=self.options.height || 300;
+			self.playerWidth=$("#moduloCamara").width() ? $("#moduloCamara").width() : 640;
+			self.playerHeight=self.options.height || 480;
 			self.playerWidth = parseInt(self.player.getAttribute('width'),10) || self.playerWidth;
 			self.playerHeight = parseInt(self.player.getAttribute('height'),10) || self.playerHeight;
 			self.player.style.width = self.playerWidth + 'px';
@@ -756,12 +756,12 @@ window.vxgplayer = function(id, options_){
 			self.size = function(width, height){
 				if(width && height){
 					if(Number.isInteger(width) && Number.isInteger(height)){
-						width = 50;//min
-						height = 50;//min
+						/* width = 50;//min
+						height = 50;//min */
 						var w = parseInt(width,10);
 						var h = parseInt(height,10);
-						//self.playerWidth = self.playerWidth != w ? w : self.playerWidth;
-						self.playerWidth = $("#moduloCamara").width() ? $("#moduloCamara").width() : w;
+						self.playerWidth = self.playerWidth != w ? w : self.playerWidth;
+						//self.playerWidth = $("#moduloCamara").width() ? $("#moduloCamara").width() : w;
 						self.playerHeight = self.playerHeight != h ? h : self.playerHeight;
 						self.player.style.width = width + 'px';
 						self.player.style.height = height + 'px';
