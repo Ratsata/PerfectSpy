@@ -756,7 +756,8 @@ window.vxgplayer = function(id, options_){
 					if(Number.isInteger(width) && Number.isInteger(height)){
 						var w = parseInt(width,10);
 						var h = parseInt(height,10);
-						self.playerWidth = self.playerWidth != w ? w : self.playerWidth;
+						//self.playerWidth = self.playerWidth != w ? w : self.playerWidth;
+						self.playerWidth = $("#moduloCamara").width() ? $("#moduloCamara").width() : w;
 						self.playerHeight = self.playerHeight != h ? h : self.playerHeight;
 						self.player.style.width = width + 'px';
 						self.player.style.height = height + 'px';
