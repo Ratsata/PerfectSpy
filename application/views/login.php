@@ -11,7 +11,7 @@
                         <input id="name" name="username" class="uk-width-1-1 uk-form-large" type="text" placeholder="Usuario" autofocus="true">
                     </div>
                     <div class="uk-form-row">
-                        <input id="password" name="password" class="uk-width-1-1 uk-form-large" type="password" placeholder="Contraseña">
+                        <input id="password" name="password" class="uk-width-1-1 uk-form-large" type="password" placeholder="Contrase&ntilde;a">
                     </div>
                     <div class="uk-form-row uk-padding-small uk-padding-remove-horizontal">
                         <input class="uk-width-1-1 uk-button uk-button-danger uk-button-large button-login" type="submit" value="Login" name="submit"/><br />
