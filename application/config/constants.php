@@ -94,12 +94,13 @@ define('TX_LED_NAME1', 'current1');
 define('TX_LED_NAME2', 'current2');
 
 
-define('TX_SCREEN_FTP_IP', '192.168.1.23');//ftp
+define('TX_SCREEN_FTP_IP', '192.168.1.240');//ftp
 define('TX_SCREEN_FTP_USERNAME', 'pi');
-define('TX_SCREEN_FTP_PASSWORD', 'raspberry');
+define('TX_SCREEN_FTP_PASSWORD', 'cvoltage');
 define('TX_SCREEN_FTP_BASE', '/');
 //define('TX_SCREEN_FTP_BASE', 'Perfect-Spy/app/');
-define('TX_UBICACION_PROYECTO', '/ftp/192.168.1.240/192.168.1.240/1/3_1.bmp');
+//define('TX_UBICACION_PROYECTO', '/ftp/192.168.1.240/192.168.1.240/1/3_1.bmp');
+define('TX_UBICACION_PROYECTO', 'ftp/');
 define('TX_URL_CITOFONO', '/HDP-1100PT/video.cgi');
 
 define('FILE_DATA' , 'assets/data.cv');
