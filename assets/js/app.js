@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    window.alert = function alert(msg) {
+      console.log('Hidden Alert ' + msg);
+    };
     cargaModulos();
     date_time('date_time');
     /* if(!idSeteado){
